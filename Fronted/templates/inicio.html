@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú de Inicio</title>
+    <link rel="stylesheet" href="..\css\inicio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <h1>PetProtege <i class="fas fa-dog"></i><i class="fas fa-exclamation-triangle"></i></h1>
+    </header>
+    <nav class="social-menu">
+        <ul>
+            <li><a href="#"><i class="fas fa-home"></i></a></li>
+            <li><a href="#"><i class="fas fa-search"></i></a></li>
+            <li><a href="#" id="openModal"><i class="fas fa-plus-circle"></i></a></li>
+            <li><a href="#"><i class="fas fa-bell"></i></a></li>
+            <li><a href="#"><i class="fas fa-user"></i></a></li>
+        </ul>
+    </nav>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>POST <i class="fas fa-edit"></i></h2>
+            <form>
+                <div class="textarea-wrapper">
+                    <textarea placeholder="Escribe algo..."></textarea>
+                        <div class="textarea-image"></div>
+                </div>
+                    <label for="image-upload" class="file-label"><i class="fas fa-image"></i></label>
+                    <input id="image-upload" type="file" accept="image/*" onchange="previewImage(event)" style="display:none;">
+                <div class="button-wrapper">
+                    <button type="submit">Publicar <i class="fas fa-paper-plane"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="../js/inicio.js"></script>
+</body>
+</html>
