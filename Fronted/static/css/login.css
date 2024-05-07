@@ -78,7 +78,7 @@ h1 {
     cursor: pointer;
 }
 
-button {
+button{
     width: 100%;
     padding: 15px;
     background-color: #006300;;
@@ -89,9 +89,10 @@ button {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-bottom: 10px;
 }
 
-button:hover {
+button:hover{
     background-color: #45a049;
 }
 
@@ -113,6 +114,10 @@ button:hover {
 /* ------------------------------------------------------*/
 .register-form {
     display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.log-form{
     animation: fadeIn 0.5s ease-in-out;
 }
 
