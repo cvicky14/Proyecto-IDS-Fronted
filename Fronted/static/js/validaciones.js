@@ -54,3 +54,14 @@ function toggleHelpCenterFields() {
         fields.forEach(field => field.style.display = 'none');
     }
 }
+
+function goBackToLogin() {
+    const registerForm = document.querySelector('.register-form');
+    const loginForm = document.querySelector('form:not(.register-form)');
+    
+    registerForm.style.display = 'none';
+    
+    loginForm.style.display = 'block';
+    
+    document.getElementById('form-title').textContent = "LOG IN";
+}
