@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú de Inicio</title>
-    <link rel="stylesheet" href="/static/css/inicio.css">
+    <link rel="stylesheet" href="../static/css/inicio.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
@@ -15,36 +15,90 @@
 <body>
     <header class="header">
         <h1>PetProtege <i class="fas fa-dog"></i><i class="fas fa-exclamation-triangle"></i></h1>
+        <nav class="social-menu">
+            {{menu.menuitems | safe}}
+            <!-- <ul>
+                <li><a href="#"><i class="fas fa-home"></i> </a></li>
+
+                <li><a href="#"><i class="fas fa-search"></i></a></li>
+                <li><a href="#" id="openModal"><i class="fas fa-plus-circle"></i></a></li>
+                <li><a href="#"><i class="fas fa-bell"></i></a></li>
+                <li><a href="#"><i class="fas fa-user"></i></a></li>
+            </ul> -->
+        </nav>
     </header>
-    <nav class="social-menu">
-        {{menu.menuitems | safe}}
-        <!-- <ul>
-            <li><a href="#"><i class="fas fa-home"></i> </a></li>
-
-            <li><a href="#"><i class="fas fa-search"></i></a></li>
-            <li><a href="#" id="openModal"><i class="fas fa-plus-circle"></i></a></li>
-            <li><a href="#"><i class="fas fa-bell"></i></a></li>
-            <li><a href="#"><i class="fas fa-user"></i></a></li>
-        </ul> -->
-    </nav>
-
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>POST <i class="fas fa-edit"></i></h2>
             <form>
+                <h3>Título:</h3>
+                <input type="text" name="title" placeholder="Escribe un título...">
                 <div class="textarea-wrapper">
                     <textarea placeholder="Escribe algo..."></textarea>
-                        <div class="textarea-image"></div>
+                    <div class="textarea-image"></div>
                 </div>
-                    <label for="image-upload" class="file-label"><i class="fas fa-image"></i></label>
-                    <input id="image-upload" type="file" accept="image/*" onchange="previewImage(event)" style="display:none;">
+                <label for="image-upload" class="file-label"><i class="fas fa-image"></i></label>
+                <input id="image-upload" type="file" accept="image/*" onchange="previewImage(event)" style="display:none;">
                 <div class="button-wrapper">
                     <button type="submit">Publicar <i class="fas fa-paper-plane"></i></button>
                 </div>
             </form>
+            
         </div>
     </div>
+    
+    <div class="publicaciones-container">
+        <div class="publicacion">
+            <div class="usuario">
+                <img src="static/imagenes/perfil1 prueba.jpg" alt="Avatar del Usuario">
+                <div class="usuario-info">
+                    <span id="usuario">Esteban</span>
+                    <span class="fecha">Publicado el 6 de mayo de 2024, 10:00 AM</span>
+                </div>
+            </div>
+            <div class="contenido">
+                <h3>Perro Encontrado</h3>
+                <p>Encontré este adorable perro cerca del parque, Parece estar perdido, ¿alguien lo reconoce?</p>
+                <img src="static/imagenes/prueba perro.jpg" alt="Imagen de la Publicación">
+                <div class="interacciones">
+                    <button><i class="far fa-thumbs-up"></i> Me gusta</button>
+                    <button><i class="far fa-comment"></i> Comentar</button>
+                    <button><i class="fas fa-share"></i> Compartir</button>
+                    <button><i class="fas fa-paw"></i> Adoptar</button>
+                </div>
+            </div>
+        </div>
+        <div class="publicacion">
+            <div class="usuario">
+                <img src="static/imagenes/perfil2 prueba.png" alt="Avatar del Usuario">
+                <div class="usuario-info">
+                    <span id="usuario">Maria</span>
+                    <span class="fecha">Publicado el 6 de mayo de 2024, 11:30 AM</span>
+                </div>
+            </div>
+            <div class="contenido">
+                <h3>¡Encuentro de Emergencia! Se busca hogar para un adorable perrito que necesita ser castrado</h3>
+                <p>¡Hola a todos!
+
+                    Hoy me encontré con este hermoso perrito cerca del parque. Estaba deambulando por las calles y parece estar perdido. Es un perro muy amigable y cariñoso, pero necesita atención médica urgente. Después de una revisión veterinaria, descubrimos que necesita ser castrado para su bienestar a largo plazo.
+                    
+                    Estoy buscando desesperadamente un hogar amoroso para él, donde pueda recibir el cuidado y la atención que necesita. Si estás interesado en adoptar o ayudar de alguna manera, ¡por favor contáctame!
+                    
+                    ¡Comparte esta publicación para que podamos encontrarle un hogar amoroso lo antes posible!
+                    
+                    ¡Gracias por tu ayuda!</p>
+                <img src="static/imagenes/perro2.png" alt="Imagen de la Publicación">
+                <div class="interacciones">
+                    <button><i class="far fa-thumbs-up"></i> Me gusta</button>
+                    <button><i class="far fa-comment"></i> Comentar</button>
+                    <button><i class="fas fa-share"></i> Compartir</button>
+                    <button><i class="fas fa-paw"></i> Adoptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="/static/js/inicio.js"></script>
 </body>
 </html>
