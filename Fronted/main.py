@@ -79,7 +79,7 @@ def CrearUsuario():
         "username": new_username,
         "correo": str(email),
         "password": str(new_password),
-        "imagenUsuario": "default.jpg",
+        "imagenUsuario": "default.png",
         "fechaCreacion": "",
         "idPerdil": 1,
         "idCentroAyuda": Id,
@@ -114,7 +114,7 @@ def PublicacionCrear():
     nm = ""
     if imagen.filename != "":
         nm = horaActual + "_" + imagen.filename
-        imagen.save("static/imagenesServer/" + nm)
+        imagen.save("/static/imagenesServer/" + nm)
 
     parametros = {
         "id": 0,

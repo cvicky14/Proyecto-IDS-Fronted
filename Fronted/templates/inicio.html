@@ -5,32 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menú de Inicio</title>
     <link rel="stylesheet" href="../static/css/inicio.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
-      const storageTheme = localStorage.getItem("theme");
-      const systemColorScheme = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches
-        ? "dark"
-        : "light";
-
-      const newTheme = storageTheme ?? systemColorScheme;
-
-      document.documentElement.setAttribute("data-theme", newTheme);
-    </script>
   </head>
   <body>
     <header class="header">
@@ -84,34 +63,29 @@
 
     <div class="publicaciones-container">
       <div class="bar" id="bar"><i class="bx bx-menu"></i></div>
-      <div class="container1">
+      <div class="menu" id="menu">
         <div class="usuarioB">
           <div class="imageU">
             <img src="/static/imagenes/perfil1 prueba.jpg" alt="" />
           </div>
-          <h3>Bienvenido</h3>
-          <p>{{menu.correo}}</p>
+          <div class="user-info">
+            <h3>Bienvenido</h3>
+            <p><i class="fas fa-user-circle"></i> {{menu.correo}}</p>
+          </div>
         </div>
-        <div class="menu">
-          <a href="#"><i class="bx bxs-hand-right"></i> Adopción de Mascotas</a>
-          <a href="#"><i class="bx bxs-hand-right"></i> Atención Veterinaria</a>
-          <a href="#"><i class="bx bxs-hand-right"></i> Albergue Temporal</a>
-          <a href="#"
-            ><i class="bx bxs-hand-right"></i> Educación y Concientización</a
-          >
-          <a href="#"
-            ><i class="bx bxs-hand-right"></i> Programas de Esterilización</a
-          >
-          <a href="#"
-            ><i class="bx bxs-hand-right"></i> Denuncias de Maltrato</a
-          >
-          <a href="#"><i class="bx bxs-hand-right"></i> Donaciones</a>
-          <a href="#"><i class="bx bxs-hand-right"></i> Contacto</a>
-        </div>
+        <a href="#"><i class="fas fa-paw"></i> Adopción de Mascotas</a>
+        <a href="#"><i class="fas fa-user-md"></i> Atención Veterinaria</a>
+        <a href="#"><i class="fas fa-hotel"></i> Albergue Temporal</a>
+        <a href="#"><i class="fas fa-book-reader"></i> Educación y Concientización</a>
+        <a href="#"><i class="fas fa-tasks"></i> Programas de Esterilización</a>
+        <a href="#"><i class="fas fa-exclamation-triangle"></i> Denuncias de Maltrato</a>
+        <a href="#"><i class="fas fa-hand-holding-usd"></i> Donaciones</a>
+        <a href="#"><i class="fas fa-address-book"></i> Contacto</a>
         <div class="imagem">
-          <img src="/static/imagenes/fondo12.png" alt="" />
+          <img src="/static/imagenes/home.png" alt="" />
         </div>
       </div>
+    </div>
 
       <!-- CONTENEDOR 2 -->
 
@@ -130,6 +104,8 @@
         <!-- INICIO PUBLICACIONES -->
       </div>
     </div>
+
+    <div class="theme-toggle" id="theme-toggle"><i class="fas fa-adjust"></i></div>
 
     <script src="/static/js/inicio.js"></script>
   </body>

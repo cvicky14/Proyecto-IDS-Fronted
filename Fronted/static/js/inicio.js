@@ -132,3 +132,19 @@ function RenderPublicaciones() {
         });
 
 }
+
+document.getElementById('bar').addEventListener('click', function() {
+  var menu = document.getElementById('menu');
+  var bar = document.getElementById('bar');
+  if (menu.style.left === "0px") {
+    menu.style.left = "-300px";
+    bar.classList.remove('open');
+  } else {
+    menu.style.left = "0";
+    bar.classList.add('open');
+  }
+});
+
+document.getElementById('theme-toggle').addEventListener('click', function() {
+  document.body.classList.toggle('dark-theme');
+});
