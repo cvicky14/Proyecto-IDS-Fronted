@@ -139,5 +139,6 @@ def PublicacionCrear():
     return render_template("inicio.html", menu=doce)
 
 
+
 if __name__ == "__main__":
     app.run(debug=True)
