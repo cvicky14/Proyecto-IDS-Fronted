@@ -1,0 +1,85 @@
+<dialog id="imgmodal">
+  <div class="container">
+    <div class="info-container" id="InfoCont">
+      <!-- <div class="container-form"> -->
+      <div id="cancelarimg" class="btn_cancelar">
+        <i class="bx bx-x"></i>
+      </div>
+      <h5 class="heading"><span>ACTUALIZAR IMAGEN</span></h5>
+      <br />
+
+      <div class="form-principalDT">
+        <form
+          id="formP"
+          action="/CambiarImg"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <!-- PAGINA NO 1 DATOS GENERALES -->
+          <div class="pagina movPag">
+            <div class="gridpagina">
+              <input
+                type="hidden"
+                name="idCorreo"
+                id="idPCorreo"
+                value="{{menu.correo}}"
+              />
+              <input id="imgu" type="hidden" value="{{menu.imagenUser}}">
+
+              <!-- Nombres -->
+              <div class="campo">
+                <div class="label">
+                  Hola!! <b>{{menu.correo}} ❤️</b>
+                  <b class="error" id="txtproducto-error"></b>
+                </div>
+              </div>
+
+              <!-- Imagen -->
+              <div class="campo">
+                <div class="label">
+                  Foto <b class="error" id="txtimagen-error"></b>
+                </div>
+
+                <input type="file" id="txtimagen" name="txtimagen" />
+              </div>
+            </div>
+
+            <div class="contenedorImg">
+              <img
+                id="previewimg"
+                src="/static/imagenesServer/{{menu.imagenUser}}"
+              />
+            </div>
+            <!-- Descripcion -->
+
+            <div class="btnsgroup">
+              <div>
+                <button
+                  name="accion1"
+                  id="btnModificarImg"
+                  value="btnModificarImg"
+                  type="submit"
+                >
+                  Modificar Imagen
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- imagen -->
+    <div class="image-container">
+      <div class="logo">
+        <div class="nombre-empresa">
+          <h3 style="letter-spacing: 4px; font-size: 24px">PetProtege</h3>
+        </div>
+      </div>
+      <br /><br />
+      <div class="image2">
+        <img src="/static/imagenesServer/default.jpg" />
+      </div>
+    </div>
+  </div>
+</dialog>

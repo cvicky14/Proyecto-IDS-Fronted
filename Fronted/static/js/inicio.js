@@ -4,18 +4,18 @@ var span = document.getElementsByClassName("close")[0];
 var form = document.querySelector('form');
 
 btn.onclick = function () {
-    modal.style.display = "block";
+  modal.style.display = "block";
 }
 span.onclick = function () {
-    modal.style.display = "none";
-    resetForm();
+  modal.style.display = "none";
+  resetForm();
 }
 
 window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-        resetForm();
-    }
+  if (event.target == modal) {
+    modal.style.display = "none";
+    resetForm();
+  }
 }
 
 // form.onsubmit = function() {
@@ -25,35 +25,35 @@ window.onclick = function (event) {
 // }
 
 function resetForm() {
-    document.querySelector('.textarea-wrapper textarea').value = '';
-    var preview = document.querySelector('.textarea-image');
-    while (preview.firstChild) {
-        preview.removeChild(preview.firstChild);
-    }
-    document.getElementById('image-upload').value = '';
+  document.querySelector('.textarea-wrapper textarea').value = '';
+  var preview = document.querySelector('.textarea-image');
+  while (preview.firstChild) {
+    preview.removeChild(preview.firstChild);
+  }
+  document.getElementById('image-upload').value = '';
 }
 
 function previewImage(event) {
-    var input = event.target;
-    var preview = document.querySelector('.textarea-image');
-    while (preview.firstChild) {
-        preview.removeChild(preview.firstChild);
+  var input = event.target;
+  var preview = document.querySelector('.textarea-image');
+  while (preview.firstChild) {
+    preview.removeChild(preview.firstChild);
+  }
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      var img = document.createElement('img');
+      img.src = e.target.result;
+      preview.appendChild(img);
     }
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            var img = document.createElement('img');
-            img.src = e.target.result;
-            preview.appendChild(img);
-        }
-        reader.readAsDataURL(input.files[0]);
-    }
+    reader.readAsDataURL(input.files[0]);
+  }
 }
 const bar = document.querySelector("#bar");
 
 bar.addEventListener("click", (e) => {
-    document.querySelector(".publicaciones-container").classList.toggle("hide");
-    document.querySelector(".bar").classList.toggle("hide");
+  document.querySelector(".publicaciones-container").classList.toggle("hide");
+  document.querySelector(".bar").classList.toggle("hide");
 })
 
 //MODO DAR AND LIGHT THEME IN THE WEB
@@ -80,20 +80,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // RENDERIZANDO LAS PUBLICACIONES
 window.onload = function () {
-    // Código que se ejecutará cuando la página termine de cargar
-    RenderPublicaciones();
+  // Código que se ejecutará cuando la página termine de cargar
+  RenderPublicaciones();
 }
 
 
 function RenderPublicaciones() {
-    axios
-        .get("http://127.0.0.1:8000/VerPublicaciones")
-        .then(function (response) {
-            let tag = "";
-            Object.entries(response.data).forEach(([key, value]) => {
-                // console.log(value.titulo)
+  axios
+    .get("http://127.0.0.1:8000/VerPublicaciones")
+    .then(function (response) {
+      let tag = "";
+      Object.entries(response.data).forEach(([key, value]) => {
+        // console.log(value.titulo)
 
-                tag += `<div class="publicacion">
+        tag += `<div class="publicacion">
                 <div class="usuario">
                   <img
                     src="static/imagenesServer/${value.imagenUsuario}"
@@ -124,16 +124,16 @@ function RenderPublicaciones() {
                 </div>
               </div>`
 
-            })
-            document.querySelector("#PublicacionesP").innerHTML = tag;
-        })
-        .catch((e) => {
-            console.log(e);
-        });
+      })
+      document.querySelector("#PublicacionesP").innerHTML = tag;
+    })
+    .catch((e) => {
+      console.log(e);
+    });
 
 }
 
-document.getElementById('bar').addEventListener('click', function() {
+document.getElementById('bar').addEventListener('click', function () {
   var menu = document.getElementById('menu');
   var bar = document.getElementById('bar');
   if (menu.style.left === "0px") {
@@ -145,6 +145,56 @@ document.getElementById('bar').addEventListener('click', function() {
   }
 });
 
-document.getElementById('theme-toggle').addEventListener('click', function() {
+document.getElementById('theme-toggle').addEventListener('click', function () {
   document.body.classList.toggle('dark-theme');
+});
+
+
+// PARA CAMBIAR LA IMAGEN DEL USUARIO
+
+const imgUsu = document.querySelector("#imgUsu");
+const imgmodal = document.querySelector("#imgmodal");
+const cancelarimg = document.querySelector("#cancelarimg");
+const imageInput = document.querySelector("#txtimagen");
+const previewimg = document.querySelector("#previewimg");
+const inputImg = document.querySelector("#imgu");
+
+
+imgUsu.addEventListener("click", (e) => {
+  e.preventDefault();
+  previewImage.src = "/static/imagenesServer/"+ inputImg.value;
+  imgmodal.showModal();
+});
+
+cancelarimg.addEventListener("click", (e) => {
+  e.preventDefault();
+  Swal.fire({
+    target: document.querySelector("#imgmodal"),
+    title: "Desea Salir",
+    text: "Se perderán los datos, si es que ya llenó algunos.",
+    icon: "info",
+    background: "#ffffff",
+    showCancelButton: true,
+    confirmButtonColor: "#0072ff",
+    cancelButtonColor: "#D2122E",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Sí, deseo salir",
+  }).then((result) => {
+    if (result.value) {
+      imgmodal.close();
+
+    }
+  });
+})
+
+
+imageInput.addEventListener('change', function () {
+  const file = this.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      previewimg.src = e.target.result;
+    }
+    reader.readAsDataURL(file);
+  }
 });

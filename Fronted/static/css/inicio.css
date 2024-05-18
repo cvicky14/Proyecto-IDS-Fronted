@@ -1,3 +1,4 @@
+ 
 .modal {
   display: none;
   color: #006300;
@@ -25,12 +26,12 @@
 .button-wrapper {
   display: flex;
   justify-content: flex-end;
-  margin-top: 10px; 
+  margin-top: 10px;
 }
 
 .button-wrapper button {
   background-color: #006300;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -53,16 +54,16 @@
 
 .close:hover,
 .close:focus {
-  color: #3CB371;
+  color: #3cb371;
   text-decoration: none;
   cursor: pointer;
 }
 
 .file-label {
   cursor: pointer;
-  color: #006300; 
-  transition: background-color 0.3s; 
-  display: inline-block; 
+  color: #006300;
+  transition: background-color 0.3s;
+  display: inline-block;
   margin-bottom: 10px;
   position: absolute;
   bottom: 20px;
@@ -76,12 +77,12 @@
 
 .modal-content textarea {
   width: calc(100% - 40px);
-  height: 200px; 
-  margin-top: 20px; 
+  height: 200px;
+  margin-top: 20px;
   padding: 10px;
   font-size: 15px;
-  font-family: 'Montserrat', sans-serif;
-  border: none; 
+  font-family: "Montserrat", sans-serif;
+  border: none;
   border-radius: 5px;
   resize: none;
   outline: none;
@@ -96,8 +97,8 @@
 
 .textarea-image {
   position: absolute;
-  bottom: 10px; 
-  left: 10px; 
+  bottom: 10px;
+  left: 10px;
   width: calc(100% - 20px);
   text-align: center;
 }
@@ -105,7 +106,7 @@
 .textarea-image img {
   max-width: calc(100% - 4px);
   max-height: 100px;
-  border-radius: 5px; 
+  border-radius: 5px;
   border: 1px solid #ccc;
   padding: 2px;
 }
@@ -113,7 +114,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 h1 {
@@ -123,12 +124,10 @@ h1 {
   font-size: 3vw;
 }
 
-
-
 .social-menu {
-  background-color: #dbdbdb; 
-  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.24); 
-  border-radius: 20px 20px 0 0; 
+  background-color: #dbdbdb;
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.24);
+  border-radius: 20px 20px 0 0;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -156,7 +155,7 @@ h1 {
 }
 
 .social-menu ul li a:hover {
-  color: #3CB371;
+  color: #3cb371;
 }
 
 .social-menu ul li a i {
@@ -169,10 +168,9 @@ h1 {
   text-align: center;
 }
 
-
 .modal-content h3 {
   font-size: 20px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin-top: 20px;
   display: inline-block;
   width: 60px;
@@ -186,7 +184,7 @@ h1 {
   padding: 5px;
   font-size: 15px;
   font-weight: bold;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   border: none;
   border-radius: 5px;
   outline: none;
@@ -194,7 +192,6 @@ h1 {
 }
 
 /* diseño de la publicacion-------------------*/
-
 
 .publicacion {
   display: flex;
@@ -269,7 +266,7 @@ h1 {
 }
 
 .interacciones button:hover {
-  color: #3CB371;
+  color: #3cb371;
 }
 
 /* diseño de la barra usuario------------------------*/
@@ -321,7 +318,9 @@ h1 {
 .imageU img {
   width: 150px;
   border-radius: 50%;
+  cursor: pointer;
 }
+
 
 .user-info {
   text-align: center;
@@ -392,7 +391,6 @@ h1 {
   background-color: #000000;
 }
 
-
 .dark-theme .social-menu ul li a {
   color: #fff;
 }
@@ -401,7 +399,7 @@ h1 {
 }
 
 .dark-theme .header {
-  background-color: rgb(22, 22, 22)
+  background-color: rgb(22, 22, 22);
 }
 
 .dark-theme .modal-content h3 {
@@ -409,11 +407,13 @@ h1 {
 }
 
 .dark-theme .modal-content input[type="text"] {
-  border-color: #ccc; 
+  border-color: #ccc;
 }
 
 .dark-theme .publicacion {
-  border-color: #008f004d;
+  border-color: #ffffffc2;
+  box-shadow: rgba(255, 255, 255, 0.3) 0px 3px 4px 0px,
+    rgba(255, 255, 255, 0.15) 0px 1px 3px 1px;
 }
 
 .dark-theme .contenido h3 {
