@@ -114,7 +114,7 @@ def PublicacionCrear():
     nm = ""
     if imagen.filename != "":
         nm = horaActual + "_" + imagen.filename
-        imagen.save("/static/imagenesServer/" + nm)
+        imagen.save("static/imagenesServer/" + nm)
 
     parametros = {
         "id": 0,
@@ -133,11 +133,65 @@ def PublicacionCrear():
 
     # INSERTANDO NUEVA PUBLICACION
     y = requests.post(urlCrear, data=json.dumps(parametros))
+    if y.status_code == 200:
+        doce = session.get("menus")
+        return redirect(url_for("Inicio"))
+    return redirect(url_for("Inicio"))
 
-    doce = session.get("menus")
 
-    return render_template("inicio.html", menu=doce)
+@app.route("/actualizarimg/<string:accion>", methods=["POST"])
+def CambiarImgUsuario(accion):
+    imagen = request.files["txtimagen"]
+    idCorreo = request.form["idCorreo"]
+    url = "http://127.0.0.1:8000/actualizarImagenUsuario"
+    tiempo = datetime.now()
+    horaActual = tiempo.strftime("%Y%H%M%S")
+    nm = ""
+    if imagen.filename != "":
+        nm = horaActual + "_" + imagen.filename
+        imagen.save("static/imagenesServer/" + nm)
 
+        if accion == "ModificarImg":
+            parametros = {
+                "id": 0,
+                "username": "",
+                "correo": idCorreo,
+                "password": "",
+                "imagenUsuario": nm,
+                "fechaCreacion": "",
+                "idPerdil": 0,
+                "idCentroAyuda": 0,
+            }
+            x = requests.put(url, data=json.dumps(parametros))
+            if x.status_code == 201:
+                response = {"estado": 1, "mensaje": "Foto Modificada Correctamente!!"}
+                return json.dumps(response)
+            else:
+                response = {"estado": 0, "mensaje": "Porfavor verificar los datos"}
+                return json.dumps(response)
+    
+
+    if accion == "EliminarImg":
+        parametros = {
+            "id": 0,
+            "username": "",
+            "correo": idCorreo,
+            "password": "",
+            "imagenUsuario": "default.jpg",
+            "fechaCreacion": "",
+            "idPerdil": 0,
+            "idCentroAyuda": 0,
+        }
+        y = requests.put(url, data=json.dumps(parametros))
+
+        if y.status_code == 201:
+            response = {"estado": 1, "mensaje": "Foto Restablecida Correctamente!!"}
+            return json.dumps(response)
+        else:
+            response = {"estado": 0, "mensaje": "Porfavor verificar los datos"}
+            return json.dumps(response)
+    response = {"estado": 0, "mensaje": "Porfavor verificar los datos"}
+    return json.dumps(response)
 
 
 if __name__ == "__main__":

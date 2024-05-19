@@ -162,7 +162,7 @@ const inputImg = document.querySelector("#imgu");
 
 imgUsu.addEventListener("click", (e) => {
   e.preventDefault();
-  previewImage.src = "/static/imagenesServer/"+ inputImg.value;
+  previewimg.src = "/static/imagenesServer/" + inputImg.value;
   imgmodal.showModal();
 });
 
@@ -198,3 +198,59 @@ imageInput.addEventListener('change', function () {
     reader.readAsDataURL(file);
   }
 });
+
+let frmc = $("#formulario1");
+let boton = document.getElementsByName("accion1");
+
+for (btn of boton) {
+  btn.addEventListener("click", function (e) {
+    // e.preventDefault();
+    let valor = this.value;
+    uno = valor;
+    console.log(valor);
+    Enviarform(valor)
+
+  })
+}
+
+function Enviarform(valor) {
+  frmc.submit(function (e) {
+    e.preventDefault();
+    $.ajax({
+      type: frmc.attr("method"),
+      url: frmc.attr("action") + "/" + valor,
+      data: new FormData(this),
+      processData: false,
+      contentType: false,
+      success: function (response) {
+        const respuesta = JSON.parse(response);
+        console.log(respuesta.estado);
+
+        if (respuesta.estado == 0) {
+          imgmodal.close();
+          Swal.fire({
+            title: "Error",
+            text: respuesta.mensaje,
+            icon: "error",
+            confirmButtonColor: "#ff004c",
+          }).then(function () {
+            window.location.replace("/Inicio");
+          });
+        } else {
+          imgmodal.close();
+          Swal.fire({
+            title: "Excelente!!",
+            text: respuesta.mensaje,
+            icon: "success",
+            confirmButtonColor: "#008d49",
+          }).then(function () {
+            window.location.replace("/");
+          });
+        }
+      },
+      error: function (error) {
+        alert(error);
+      },
+    });
+  });
+}

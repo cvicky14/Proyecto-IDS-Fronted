@@ -5,13 +5,13 @@
       <div id="cancelarimg" class="btn_cancelar">
         <i class="bx bx-x"></i>
       </div>
-      <h5 class="heading"><span>ACTUALIZAR IMAGEN</span></h5>
+      <h3 class="heading">ACTUALIZAR IMAGEN</h3>
       <br />
 
       <div class="form-principalDT">
         <form
-          id="formP"
-          action="/CambiarImg"
+          id="formulario1"
+          action="/actualizarimg"
           method="post"
           enctype="multipart/form-data"
         >
@@ -24,7 +24,7 @@
                 id="idPCorreo"
                 value="{{menu.correo}}"
               />
-              <input id="imgu" type="hidden" value="{{menu.imagenUser}}">
+              <input id="imgu" type="hidden" value="{{menu.imagenUser}}" />
 
               <!-- Nombres -->
               <div class="campo">
@@ -57,10 +57,19 @@
                 <button
                   name="accion1"
                   id="btnModificarImg"
-                  value="btnModificarImg"
-                  type="submit"
+                  value="ModificarImg"
+                  type=""
                 >
                   Modificar Imagen
+                </button>
+
+                <button
+                  name="accion1"
+                  id="btnEliminarImg"
+                  value="EliminarImg"
+                  type="submit"
+                >
+                  Eliminar Imagen
                 </button>
               </div>
             </div>
