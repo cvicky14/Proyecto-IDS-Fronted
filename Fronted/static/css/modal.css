@@ -23,12 +23,7 @@ body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
   width: 100%;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(
-    10deg,
-    rgba(253, 255, 255, 1) 30%,
-    rgb(182, 255, 183) 50%,
-    rgb(0, 175, 47) 100%
-  );
+  background-color:  rgb(182, 255, 183);
   border-radius: 8px;
 }
 

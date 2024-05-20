@@ -117,7 +117,7 @@ function RenderPublicaciones() {
 
                   </div>
                   <div class="btnOpciones" id="${clase}" >
-                  <button value= "${value.id}" id="VerOpciones" >Ver Opciones</button>
+                  <button value= "${value.id}" id="VerOpciones" ><i class="fas fa-ellipsis-h"></i></button>
                    </div>
                 </div>
                 <div class="contenido">

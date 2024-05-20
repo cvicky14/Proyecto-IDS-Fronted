@@ -131,6 +131,7 @@ h1 {
   bottom: 0;
   left: 0;
   width: 100%;
+  z-index: 999999;
 }
 
 .social-menu ul {
@@ -242,28 +243,11 @@ h1 {
 }
 
 .btnOpciones button {
-  background-image: linear-gradient(
-    to right,
-    #007991 0%,
-    #78ffd6 51%,
-    #007991 100%
-  );
-  margin: 10px;
-  padding: 15px 30px;
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.5s;
-  background-size: 200% auto;
-  color: white;
-  border-radius: 10px;
   border: none;
   cursor: pointer;
+  background: none;
 }
-.btnOpciones button:hover {
-  background-position: right center; /* change the direction of the change here */
-  color: #fff;
-  text-decoration: none;
-}
+ 
 
 #usuario {
   font-weight: bold;
