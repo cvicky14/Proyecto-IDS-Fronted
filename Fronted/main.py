@@ -194,5 +194,21 @@ def CambiarImgUsuario(accion):
     return json.dumps(response)
 
 
+@app.route("/Buscar", methods=["GET"])
+def buscar():
+    correo_usuario = session.get("menus").get("correo")
+    if correo_usuario:
+        url = "http://127.0.0.1:8000/ListarPporUsuario/<correo>"
+        parametros = {"correo": correo_usuario}
+        response = requests.get(url, params=parametros)
+        if response.status_code == 200:
+            publicaciones = response.json()
+            return render_template("publicaciones.html", publicaciones=publicaciones, correo_usuario=correo_usuario)
+    return render_template("publicaciones.html", publicaciones=[], correo_usuario=correo_usuario)
+
+
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)
