@@ -1,0 +1,83 @@
+<dialog id="modalOpcion">
+  <div class="container">
+    <div class="info-container" id="InfoCont">
+      <!-- <div class="container-form"> -->
+      <div id="cancelarMopcion" class="btn_cancelar">
+        <i class="bx bx-x"></i>
+      </div>
+      <h3 class="heading">Opciones Animal</h3>
+      <br />
+
+      <div class="form-principalDT">
+        <form
+          id="formulario1"
+          action="/OpcionesAnimal"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <!-- PAGINA NO 1 DATOS GENERALES -->
+          <div class="pagina movPag">
+            <div class="gridpagina">
+              <input
+                type="hidden"
+                name="idCorreo"
+                id="idPCorreo"
+                value="{{menu.correo}}"
+              />
+              <input id="imgu" type="hidden" value="{{menu.imagenUser}}" />
+
+              <!-- Nombres -->
+              <div class="campo">
+                <div class="label">
+                  Hola!! <b>{{menu.correo}} ❤️</b>
+                  <b class="error" id="txtproducto-error"></b>
+                </div>
+              </div>
+
+              <!-- Imagen -->
+              <div class="campo">
+                <div class="label">
+                  Opciones <b class="error" id="txtimagen-error"></b>
+                </div>
+
+                <select name="textOpcion" id="textOpcion">
+                  <option value="value1">Value 1</option>
+                  <option value="value2">Value 2</option>
+                  <option value="value3">Value 3</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Descripcion -->
+
+            <div class="btnsgroup">
+              <div>
+                <button
+                  name="accion"
+                  id="btnAceptarOpcion"
+                  value="AceptarOpcion"
+                  type=""
+                >
+                  Aceptar
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- imagen -->
+    <div class="image-container">
+      <div class="logo">
+        <div class="nombre-empresa">
+          <h3 style="letter-spacing: 4px; font-size: 24px">PetProtege</h3>
+        </div>
+      </div>
+      <br /><br />
+      <div class="image2">
+        <img src="/static/imagenesServer/default.jpg" />
+      </div>
+    </div>
+  </div>
+</dialog>

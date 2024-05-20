@@ -84,27 +84,41 @@ window.onload = function () {
   RenderPublicaciones();
 }
 
+let correoUs = document.querySelector("#correoUs");
 
 function RenderPublicaciones() {
+  let correo = correoUs.value;
   axios
     .get("http://127.0.0.1:8000/VerPublicaciones")
     .then(function (response) {
       let tag = "";
       Object.entries(response.data).forEach(([key, value]) => {
         // console.log(value.titulo)
+        let clase = "ocultar";
+        if (correo != value.correo) {
+          clase = "ver";
+        }
+
 
         tag += `<div class="publicacion">
                 <div class="usuario">
-                  <img
-                    src="static/imagenesServer/${value.imagenUsuario}"
-                    
-                  />
+                
                   <div class="usuario-info">
+                  <img
+                  src="static/imagenesServer/${value.imagenUsuario}"
+                  
+                />
+               <div class="infor">  
                     <span id="usuario">${value.user}</span>
                     <span class="fecha"
                       >Publicado el ${value.fechaHora}</span
                     >
+                    </div>
+
                   </div>
+                  <div class="btnOpciones" id="${clase}" >
+                  <button value= "${value.id}" id="VerOpciones" >Ver Opciones</button>
+                   </div>
                 </div>
                 <div class="contenido">
                   <h3>${value.titulo}</h3>
@@ -126,11 +140,12 @@ function RenderPublicaciones() {
 
       })
       document.querySelector("#PublicacionesP").innerHTML = tag;
+      OpcionesAnimales();
+
     })
     .catch((e) => {
       console.log(e);
     });
-
 }
 
 document.getElementById('bar').addEventListener('click', function () {
@@ -254,3 +269,4 @@ function Enviarform(valor) {
     });
   });
 }
+
