@@ -193,16 +193,27 @@ h1 {
 
 /* diseño de la publicacion-------------------*/
 
-.publicacion {
+#publicacion {
   display: flex;
   flex-direction: column;
-  border: 1px solid #0063004d;
+
   border-radius: 15px;
   padding: 15px;
   text-align: justify;
   margin: 20px auto;
   max-width: 600px;
   margin-bottom: 60px;
+}
+
+.estado0 {
+  border: 1px solid #0063004d;
+}
+
+.estado1 {
+  border: 1px solid #ffffffbf;
+  box-shadow: rgba(0, 242, 255, 0.4) 0px 2px 4px,
+    rgba(0, 255, 234, 0.3) 0px 7px 13px -3px,
+    rgba(0, 242, 255, 0.2) 0px -3px 0px inset;
 }
 
 .contenido p {
@@ -247,7 +258,6 @@ h1 {
   cursor: pointer;
   background: none;
 }
- 
 
 #usuario {
   font-weight: bold;
@@ -369,10 +379,23 @@ h1 {
 
 /* ESTILOS PARA EL IDPUBLICACION */
 
-#ocultar{
+#ocultar {
   display: none;
 }
 
+::-webkit-scrollbar {
+  width: 0.6rem;
+  background-color: #c4ffdd;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #3cb371;
+  border-radius: 0.2rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #02823a;
+}
 
 /* tema oscuro */
 

@@ -3,6 +3,8 @@ var btn = document.getElementById("Publicar");
 var span = document.getElementsByClassName("close")[0];
 var form = document.querySelector('form');
 
+ 
+
 btn.onclick = function () {
   modal.style.display = "block";
 }
@@ -61,7 +63,7 @@ const body = document.querySelector("body");
 let modeToggle = body.querySelector("#switch-mode");
 const sidebar = body.querySelector("#menu_opcion");
 
-document.addEventListener("DOMContentLoaded", function () {
+function mode(){
   const swictherTheme = document.querySelector("#switch-mode");
   const root = document.documentElement;
 
@@ -76,11 +78,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   swictherTheme.addEventListener("click", toggleTheme);
-});
-
+}
 // RENDERIZANDO LAS PUBLICACIONES
 window.onload = function () {
   // Código que se ejecutará cuando la página termine de cargar
+  mode();
   RenderPublicaciones();
 }
 
@@ -94,13 +96,21 @@ function RenderPublicaciones() {
       let tag = "";
       Object.entries(response.data).forEach(([key, value]) => {
         // console.log(value.titulo)
+        let estado = value.estado;
+
         let clase = "ocultar";
-        if (correo != value.correo) {
+        if (correo != value.correo && estado === 0) {
           clase = "ver";
         }
+        let espublicacion = "estado0";
+        let dive = "ocultar";
 
+        if (estado != 0) {
+          espublicacion = "estado1"
+          dive = "ver";
+        }
 
-        tag += `<div class="publicacion">
+        tag += `<div id="publicacion" class="${espublicacion}">
                 <div class="usuario">
                 
                   <div class="usuario-info">
@@ -115,6 +125,9 @@ function RenderPublicaciones() {
                     >
                     </div>
 
+                  </div>
+                  <div name="estadot" class ="dv${estado}" id="${dive}">
+                  
                   </div>
                   <div class="btnOpciones" id="${clase}" >
                   <button value= "${value.id}" id="VerOpciones" ><i class="fas fa-ellipsis-h"></i></button>
@@ -141,11 +154,13 @@ function RenderPublicaciones() {
       })
       document.querySelector("#PublicacionesP").innerHTML = tag;
       OpcionesAnimales();
-
+      // txtEstado44();
     })
     .catch((e) => {
       console.log(e);
     });
+
+  
 }
 
 document.getElementById('bar').addEventListener('click', function () {
