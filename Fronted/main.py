@@ -211,8 +211,20 @@ def publicaciones():
         "publicaciones.html", publicaciones=[], correo_usuario=correo_usuario
     )
 
+@app.route("/verAyudas")
+def VerAyudasAdmon():
+    doce = session.get("menus")
 
+    return render_template("verAyudas.html", menu=doce)
 
+@app.route("/EliminarPublicacion/<int:idPublicacion>", methods=["DELETE"])
+def eliminar_publicacion(idPublicacion):
+    url = f"http://127.0.0.1:8000/EliminarPublicacion/{idPublicacion}"
+    response = requests.delete(url)
+    if response.status_code == 200:
+        return redirect(url_for("publicaciones"))
+    else:
+        return "Error al eliminar la publicación", 400
 
 
 if __name__ == "__main__":
