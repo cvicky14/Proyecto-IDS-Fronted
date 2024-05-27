@@ -169,7 +169,6 @@ def CambiarImgUsuario(accion):
             else:
                 response = {"estado": 0, "mensaje": "Porfavor verificar los datos"}
                 return json.dumps(response)
-    
 
     if accion == "EliminarImg":
         parametros = {
@@ -203,18 +202,16 @@ def publicaciones():
         response = requests.get(url, params=parametros)
         if response.status_code == 200:
             publicaciones = response.json()
-            return render_template("publicaciones.html", publicaciones=publicaciones, correo_usuario=correo_usuario)
-    return render_template("publicaciones.html", publicaciones=[], correo_usuario=correo_usuario)
+            return render_template(
+                "publicaciones.html",
+                publicaciones=publicaciones,
+                correo_usuario=correo_usuario,
+            )
+    return render_template(
+        "publicaciones.html", publicaciones=[], correo_usuario=correo_usuario
+    )
 
 
-@app.route("/EliminarPublicacion/<int:idPublicacion>", methods=["DELETE"])
-def eliminar_publicacion(idPublicacion):
-    url = f"http://127.0.0.1:8000/EliminarPublicacion/{idPublicacion}"
-    response = requests.delete(url)
-    if response.status_code == 200:
-        return redirect(url_for("publicaciones"))
-    else:
-        return "Error al eliminar la publicación", 400
 
 
 
