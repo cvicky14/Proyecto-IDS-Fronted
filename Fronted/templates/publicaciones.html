@@ -22,6 +22,7 @@
                     <th>Descripción</th>
                     <th>Lugar</th>
                     <th>Fecha y Hora</th>
+                    <th>Imagen</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -32,11 +33,19 @@
                     <td>{{ publicacion.descripcion }}</td>
                     <td>{{ publicacion.lugar }}</td>
                     <td>{{ publicacion.fechaHora }}</td>
-                    <td><button><i class="fas fa-edit"></i></button><button><i class="fas fa-trash"></i></button></td>
+                    <td class="image-cell">
+                        <img src="../static/imagenesServer/{{ publicacion.foto }}" alt="Imagen de la Publicación" class="thumbnail">
+                    </td>
+                    
+                    <td class="boton-td">
+                        <button><i class="fas fa-edit"></i></button>
+                        <button onclick="eliminarPublicacion('{{ publicacion.id }}')" class="eliminarBtn"><i class="fas fa-trash"></i></button>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
 </body>
+<script src="/static/js/publicaciones.js"></script>
 </html>

@@ -87,3 +87,27 @@ function RenderPublicaciones() {
   
   
   }
+
+
+  function eliminarPublicacion(idPublicacion) {
+    const url =`http://127.0.0.1:8000/EliminarPublicacion/%3CidPublicacion%3E?idPublicacion=${idPublicacion}`
+const requestOptions = {
+    method: 'DELETE',
+    headers: {
+        'Content-Type': 'application/json'
+    }
+};
+
+fetch(url, requestOptions)
+    .then(response => {
+        if (response.ok) {
+            console.log('Publicación eliminada correctamente');
+            location.reload();
+        } else {
+            console.error('Error al eliminar la publicación');
+        }
+    })
+    .catch(error => {
+        console.error('Error en la solicitud DELETE:', error);
+    });
+}

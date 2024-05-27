@@ -114,7 +114,7 @@ def PublicacionCrear():
     nm = ""
     if imagen.filename != "":
         nm = horaActual + "_" + imagen.filename
-        imagen.save("static/imagenesServer/" + nm)
+        imagen.save("/static/imagenesServer/" + nm)
 
     parametros = {
         "id": 0,
@@ -217,14 +217,6 @@ def VerAyudasAdmon():
 
     return render_template("verAyudas.html", menu=doce)
 
-@app.route("/EliminarPublicacion/<int:idPublicacion>", methods=["DELETE"])
-def eliminar_publicacion(idPublicacion):
-    url = f"http://127.0.0.1:8000/EliminarPublicacion/{idPublicacion}"
-    response = requests.delete(url)
-    if response.status_code == 200:
-        return redirect(url_for("publicaciones"))
-    else:
-        return "Error al eliminar la publicación", 400
 
 
 if __name__ == "__main__":
