@@ -1,0 +1,53 @@
+<div class="publicaciones-container">
+  <div class="bar" id="bar"><i class="bx bx-menu"></i></div>
+  <div class="menu" id="menu">
+    <div class="usuarioB">
+      <div class="imageU">
+        <img
+          id="imgUsu"
+          src="/static/imagenesServer/{{menu.imagenUser}}"
+          alt=""
+        />
+      </div>
+      <input id="imgu" type="hidden" value="{{menu.imagenUser}}" />
+      <div class="user-info">
+        <h3>Bienvenido(a)</h3>
+        <p><i class="fas fa-user-circle"></i> {{menu.correo}}</p>
+      </div>
+    </div>
+    <a href="#"><i class="fas fa-paw"></i> Adopción de Mascotas</a>
+    <a href="#"><i class="fas fa-user-md"></i> Atención Veterinaria</a>
+    <a href="#"><i class="fas fa-hotel"></i> Albergue Temporal</a>
+    <a href="#"
+      ><i class="fas fa-book-reader"></i> Educación y Concientización</a
+    >
+    <a href="#"><i class="fas fa-tasks"></i> Programas de Esterilización</a>
+    <a href="#"
+      ><i class="fas fa-exclamation-triangle"></i> Denuncias de Maltrato</a
+    >
+    <a href="#"><i class="fas fa-hand-holding-usd"></i> Donaciones</a>
+    <a href="#"><i class="fas fa-address-book"></i> Contacto</a>
+    <div class="imagem">
+      <img src="/static/imagenes/home.png" alt="" />
+    </div>
+  </div>
+</div>
+
+<div class="container2">
+  <div class="tituloHome">
+    <h1>
+      PetProtege <i class="fas fa-dog"></i
+      ><i class="fas fa-exclamation-triangle"></i>
+    </h1>
+    <div class="switch">
+      <input type="checkbox" id="switch-mode" hidden />
+      <label for="switch-mode" class="switch-mode"></label>
+    </div>
+  </div>
+  <div id="PublicacionesP" class="Publicaciones"></div>
+  <!-- INICIO PUBLICACIONES -->
+</div>
+
+<div class="theme-toggle" id="theme-toggle">
+  <i class="fas fa-adjust"></i>
+</div>

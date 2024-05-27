@@ -254,6 +254,19 @@ input[type="file"]::file-selector-button:hover {
   border-radius: 4px;
 }
 
+.contenedor {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.contenedor table{
+  display: block;
+  width: 90% !important;
+ 
+  color: blue;
+}
+
 @media (max-width: 710px) {
   #imgmodal {
     width: 95%;

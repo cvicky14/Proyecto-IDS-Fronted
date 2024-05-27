@@ -169,7 +169,6 @@ def CambiarImgUsuario(accion):
             else:
                 response = {"estado": 0, "mensaje": "Porfavor verificar los datos"}
                 return json.dumps(response)
-    
 
     if accion == "EliminarImg":
         parametros = {
@@ -203,11 +202,21 @@ def buscar():
         response = requests.get(url, params=parametros)
         if response.status_code == 200:
             publicaciones = response.json()
-            return render_template("publicaciones.html", publicaciones=publicaciones, correo_usuario=correo_usuario)
-    return render_template("publicaciones.html", publicaciones=[], correo_usuario=correo_usuario)
+            return render_template(
+                "publicaciones.html",
+                publicaciones=publicaciones,
+                correo_usuario=correo_usuario,
+            )
+    return render_template(
+        "publicaciones.html", publicaciones=[], correo_usuario=correo_usuario
+    )
 
 
+@app.route("/verAyudas")
+def VerAyudasAdmon():
+    doce = session.get("menus")
 
+    return render_template("verAyudas.html", menu=doce)
 
 
 if __name__ == "__main__":

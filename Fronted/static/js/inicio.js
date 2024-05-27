@@ -3,15 +3,18 @@ var btn = document.getElementById("Publicar");
 var span = document.getElementsByClassName("close")[0];
 var form = document.querySelector('form');
 
- 
+
 
 btn.onclick = function () {
   modal.style.display = "block";
 }
-span.onclick = function () {
-  modal.style.display = "none";
-  resetForm();
+if (span) {
+  span.onclick = function () {
+    modal.style.display = "none";
+    resetForm();
+  }
 }
+
 
 window.onclick = function (event) {
   if (event.target == modal) {
@@ -63,7 +66,7 @@ const body = document.querySelector("body");
 let modeToggle = body.querySelector("#switch-mode");
 const sidebar = body.querySelector("#menu_opcion");
 
-function mode(){
+function mode() {
   const swictherTheme = document.querySelector("#switch-mode");
   const root = document.documentElement;
 
@@ -76,92 +79,19 @@ function mode(){
     root.setAttribute("data-theme", setTheme);
     localStorage.setItem("theme", setTheme);
   }
+  if (swictherTheme) {
+    swictherTheme.addEventListener("click", toggleTheme);
+  }
 
-  swictherTheme.addEventListener("click", toggleTheme);
 }
 // RENDERIZANDO LAS PUBLICACIONES
 window.onload = function () {
   // Código que se ejecutará cuando la página termine de cargar
   mode();
-  RenderPublicaciones();
 }
 
-let correoUs = document.querySelector("#correoUs");
 
-function RenderPublicaciones() {
-  let correo = correoUs.value;
-  axios
-    .get("http://127.0.0.1:8000/VerPublicaciones")
-    .then(function (response) {
-      let tag = "";
-      Object.entries(response.data).forEach(([key, value]) => {
-        // console.log(value.titulo)
-        let estado = value.estado;
 
-        let clase = "ocultar";
-        if (correo != value.correo && estado === 0) {
-          clase = "ver";
-        }
-        let espublicacion = "estado0";
-        let dive = "ocultar";
-
-        if (estado != 0) {
-          espublicacion = "estado1"
-          dive = "ver";
-        }
-
-        tag += `<div id="publicacion" class="${espublicacion}">
-                <div class="usuario">
-                
-                  <div class="usuario-info">
-                  <img
-                  src="static/imagenesServer/${value.imagenUsuario}"
-                  
-                />
-               <div class="infor">  
-                    <span id="usuario">${value.user}</span>
-                    <span class="fecha"
-                      >Publicado el ${value.fechaHora}</span
-                    >
-                    </div>
-
-                  </div>
-                  <div name="estadot" class ="dv${estado}" id="${dive}">
-                  
-                  </div>
-                  <div class="btnOpciones" id="${clase}" >
-                  <button value= "${value.id}" id="VerOpciones" ><i class="fas fa-ellipsis-h"></i></button>
-                   </div>
-                </div>
-                <div class="contenido">
-                  <h3>${value.titulo}</h3>
-                  <p>
-                    ${value.descripcion}
-                  </p>
-                  <img
-                    src="static/imagenesServer/${value.foto}"
-                    alt="Imagen de la Publicación"
-                  />
-                  <div class="interacciones">
-                    <button value= "${value.id}"><i class="far fa-thumbs-up"></i> Me gusta</button>
-                    <button value= "${value.id}" ><i class="far fa-comment"></i> Comentar</button>
-                    <button value= "${value.id}" ><i class="fas fa-share"></i> Compartir</button>
-                    <button value= "${value.id}" ><i class="fas fa-paw"></i> Adoptar</button>
-                  </div>
-                </div>
-              </div>`
-
-      })
-      document.querySelector("#PublicacionesP").innerHTML = tag;
-      OpcionesAnimales();
-      // txtEstado44();
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-
-  
-}
 
 document.getElementById('bar').addEventListener('click', function () {
   var menu = document.getElementById('menu');
@@ -174,114 +104,10 @@ document.getElementById('bar').addEventListener('click', function () {
     bar.classList.add('open');
   }
 });
-
-document.getElementById('theme-toggle').addEventListener('click', function () {
-  document.body.classList.toggle('dark-theme');
-});
-
-
-// PARA CAMBIAR LA IMAGEN DEL USUARIO
-
-const imgUsu = document.querySelector("#imgUsu");
-const imgmodal = document.querySelector("#imgmodal");
-const cancelarimg = document.querySelector("#cancelarimg");
-const imageInput = document.querySelector("#txtimagen");
-const previewimg = document.querySelector("#previewimg");
-const inputImg = document.querySelector("#imgu");
-
-
-imgUsu.addEventListener("click", (e) => {
-  e.preventDefault();
-  previewimg.src = "/static/imagenesServer/" + inputImg.value;
-  imgmodal.showModal();
-});
-
-cancelarimg.addEventListener("click", (e) => {
-  e.preventDefault();
-  Swal.fire({
-    target: document.querySelector("#imgmodal"),
-    title: "Desea Salir",
-    text: "Se perderán los datos, si es que ya llenó algunos.",
-    icon: "info",
-    background: "#ffffff",
-    showCancelButton: true,
-    confirmButtonColor: "#0072ff",
-    cancelButtonColor: "#D2122E",
-    cancelButtonText: "Cancelar",
-    confirmButtonText: "Sí, deseo salir",
-  }).then((result) => {
-    if (result.value) {
-      imgmodal.close();
-
-    }
-  });
-})
-
-
-imageInput.addEventListener('change', function () {
-  const file = this.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      previewimg.src = e.target.result;
-    }
-    reader.readAsDataURL(file);
-  }
-});
-
-let frmc = $("#formulario1");
-let boton = document.getElementsByName("accion1");
-
-for (btn of boton) {
-  btn.addEventListener("click", function (e) {
-    // e.preventDefault();
-    let valor = this.value;
-    uno = valor;
-    console.log(valor);
-    Enviarform(valor)
-
-  })
-}
-
-function Enviarform(valor) {
-  frmc.submit(function (e) {
-    e.preventDefault();
-    $.ajax({
-      type: frmc.attr("method"),
-      url: frmc.attr("action") + "/" + valor,
-      data: new FormData(this),
-      processData: false,
-      contentType: false,
-      success: function (response) {
-        const respuesta = JSON.parse(response);
-        console.log(respuesta.estado);
-
-        if (respuesta.estado == 0) {
-          imgmodal.close();
-          Swal.fire({
-            title: "Error",
-            text: respuesta.mensaje,
-            icon: "error",
-            confirmButtonColor: "#ff004c",
-          }).then(function () {
-            window.location.replace("/Inicio");
-          });
-        } else {
-          imgmodal.close();
-          Swal.fire({
-            title: "Excelente!!",
-            text: respuesta.mensaje,
-            icon: "success",
-            confirmButtonColor: "#008d49",
-          }).then(function () {
-            window.location.replace("/");
-          });
-        }
-      },
-      error: function (error) {
-        alert(error);
-      },
-    });
+const togle = document.getElementById('theme-toggle');
+if (togle) {
+  togle.addEventListener('click', function () {
+    document.body.classList.toggle('dark-theme');
   });
 }
 

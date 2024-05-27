@@ -6,10 +6,11 @@ const id1 = document.querySelector("#id1");
 
 
 
-
+if(cancelarMopcion){
 cancelarMopcion.addEventListener("click", (e) => {
     modalOpcion.close();
 })
+}
 
 const textOpcion = document.querySelector("#textOpcion");
 
