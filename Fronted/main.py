@@ -214,8 +214,15 @@ def publicaciones():
 @app.route("/verAyudas")
 def VerAyudasAdmon():
     doce = session.get("menus")
+    url = "http://127.0.0.1:8000/SeleccionarEstadosA"
+        
+    peticion = requests.get(url)
+    if peticion.status_code == 200:
+        datos = peticion.json()
+        
+    print(datos)
+    return render_template("verAyudas.html", menu=doce, tabla = datos)
 
-    return render_template("verAyudas.html", menu=doce)
 
 
 

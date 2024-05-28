@@ -2,6 +2,15 @@ body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
   overflow: auto !important;
 }
 
+:root {
+  --primary-color: #00b840;
+  --secondarycolor: #c23dff;
+  --background-color: #ffffff;
+  --textcolor: #000000;
+  --hover-color: #5ffbb5;
+  --paddingx: 1rem;
+}
+
 .swal2-container.swal2-backdrop-show,
 .swal2-container.swal2-noanimation {
   background-color: transparent !important;
@@ -254,17 +263,167 @@ input[type="file"]::file-selector-button:hover {
   border-radius: 4px;
 }
 
+/* ESTILO PARA LA TABLA DINAMICA */
+.tablaAyuda {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  padding: 10px;
+  margin: 0 0 5rem 0;
+}
 .contenedor {
-  position: relative;
+  margin-top: 20px;
+  width: 80%;
   display: flex;
   justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #111;
+  background-color: var(--background-color);
+  box-shadow: rgba(46, 240, 98, 0.4) 5px 5px, rgba(53, 240, 46, 0.3) 10px 10px,
+    rgba(72, 240, 46, 0.2) 15px 15px, rgba(46, 240, 59, 0.1) 20px 20px,
+    rgba(58, 89, 64, 0.05) 25px 25px;
+  border: 2px solid #6ff99d;
 }
 
-.contenedor table{
+.contenedor label {
+  color: var(--textcolor);
+  margin: var(--paddingx) !important;
+}
+
+.dataTables_wrapper .dataTables_info {
+  float: left;
+  padding-top: 1.2rem !important;
+  color: var(--textcolor) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.curren {
+  width: 5px;
+  height: 5px;
+}
+
+div.dataTables_wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+thead {
+  background-color: var(--background-color);
+}
+
+thead > tr,
+thead > tr > th {
+  color: var(--textcolor);
+  font-weight: normal;
+  text-align: start;
+}
+
+table.dataTable thead th,
+table.dataTable thead td {
+  border-bottom: 0px solid var(--textcolor) !important;
+  font-size: 13px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+table.dataTable thead th.sorting:after,
+table.dataTable thead th.sorting_asc:after,
+table.dataTable thead th.sorting_desc:after {
+  position: absolute;
+  top: 12px;
+  right: 8px;
   display: block;
-  width: 90% !important;
- 
-  color: blue;
+  font-family: "Font Awesome\ 5 Free";
+}
+
+table.dataTable thead th.sorting:after {
+  content: "\f0dc";
+  color: var(--dark);
+  font-size: 0.8em;
+  padding-top: 0.12em;
+}
+
+table.dataTable thead th.sorting_asc:after {
+  content: "\f0de";
+}
+
+table.dataTable thead th.sorting_desc:after {
+  content: "\f0dd";
+}
+
+table.dataTable.display tbody tr:hover > .sorting_1,
+table.dataTable.order-column.hover tbody tr:hover > .sorting_1 {
+  color: var(--textcolor);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+table.dataTable.display tbody tr {
+  cursor: pointer;
+  font-size: 12px;
+  border-collapse: collapse !important;
+  word-wrap: break-word;
+  color: #111;
+}
+
+tbody tr:hover {
+  background-color: var(--hover-color) !important;
+  color: var(--textcolor);
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  border-radius: 50%;
+  font-size: 11px;
+  color: var(--dark) !important;
+  border: 0;
+  cursor: pointer;
+}
+
+table.dataTable thead th.sorting:after {
+  display: none;
+}
+
+.dataTables_filter {
+  margin-top: 0.6rem !important;
+}
+.dataTables_wrapper .dataTables_filter input {
+  width: 100%;
+  margin-left: 10px !important;
+  height: 30px;
+  background-color: var(--background-color);
+  border: 1px solid rgba(192, 192, 192, 0.597);
+  border-radius: 5px;
+  padding-left: 5px;
+  margin-bottom: 10px;
+}
+
+.dataTables_wrapper .dataTables_filter input:hover {
+  box-shadow: 0 0 10px var(--hover-color);
+}
+
+tfoot {
+  color: #111;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+  color: #111 !important;
+  cursor: pointer !important;
+  padding: 10px !important;
+  border-radius: 10px;
+}
+#example_next:hover,
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
+  background-color: var(--hover-color);
+  color: #111;
+}
+
+#example_next {
+  color: #111 !important;
+  cursor: pointer !important;
+  padding: 10px !important;
+  border-radius: 10px;
 }
 
 @media (max-width: 710px) {

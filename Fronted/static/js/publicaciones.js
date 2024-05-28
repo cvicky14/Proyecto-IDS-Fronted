@@ -1,5 +1,5 @@
 window.onload = function () {
-    RenderPublicaciones();
+  RenderPublicaciones();
 
 }
 
@@ -7,29 +7,29 @@ let correoUs = document.querySelector("#correoUs");
 
 
 function RenderPublicaciones() {
-    let correo = correoUs.value;
-    axios
-      .get("http://127.0.0.1:8000/VerPublicaciones")
-      .then(function (response) {
-        let tag = "";
-        Object.entries(response.data).forEach(([key, value]) => {
-          // console.log(value.titulo)
-          let estado = value.estado;
-          let texto = "Ayudame 🥹";
-          let clase = "ocultar";
-          if (correo != value.correo && estado === 0) {
-            clase = "ver";
-          }
-          let espublicacion = "estado0";
-          let dive = "ver";
-  
-          if (estado != 0) {
-            espublicacion = "estado1"
-            dive = "ver";
-            texto = "En ayuda 😊";
-          }
-  
-          tag += `<div id="publicacion" class="${espublicacion}">
+  let correo = correoUs.value;
+  axios
+    .get("http://127.0.0.1:8000/VerPublicaciones")
+    .then(function (response) {
+      let tag = "";
+      Object.entries(response.data).forEach(([key, value]) => {
+        // console.log(value.titulo)
+        let estado = value.estado;
+        let texto = "Ayudame 🥹";
+        let clase = "ocultar";
+        if (correo != value.correo && estado === 0) {
+          clase = "ver";
+        }
+        let espublicacion = "estado0";
+        let dive = "ver";
+
+        if (estado != 0) {
+          espublicacion = "estado1"
+          dive = "ver";
+          texto = "En ayuda 😊";
+        }
+
+        tag += `<div id="publicacion" class="${espublicacion}">
                   <div class="usuario">
                   
                     <div class="usuario-info">
@@ -73,41 +73,41 @@ function RenderPublicaciones() {
                     </div>
                   </div>
                 </div>`
-  
-  
-  
-        })
-        document.querySelector("#PublicacionesP").innerHTML = tag;
-        OpcionesAnimales();
-        // txtEstado44();
+
+
+
       })
-      .catch((e) => {
-        console.log(e);
-      });
-  
-  
-  }
+      document.querySelector("#PublicacionesP").innerHTML = tag;
+      OpcionesAnimales();
+      // txtEstado44();
+    })
+    .catch((e) => {
+      console.log(e);
+    });
 
 
-  function eliminarPublicacion(idPublicacion) {
-    const url =`http://127.0.0.1:8000/EliminarPublicacion/%3CidPublicacion%3E?idPublicacion=${idPublicacion}`
-const requestOptions = {
+}
+
+
+function eliminarPublicacion(idPublicacion) {
+  const url = `http://127.0.0.1:8000/EliminarPublicacion/%3CidPublicacion%3E?idPublicacion=${idPublicacion}`
+  const requestOptions = {
     method: 'DELETE',
     headers: {
-        'Content-Type': 'application/json'
+      'Content-Type': 'application/json'
     }
-};
+  };
 
-fetch(url, requestOptions)
+  fetch(url, requestOptions)
     .then(response => {
-        if (response.ok) {
-            console.log('Publicación eliminada correctamente');
-            location.reload();
-        } else {
-            console.error('Error al eliminar la publicación');
-        }
+      if (response.ok) {
+        console.log('Publicación eliminada correctamente');
+        location.reload();
+      } else {
+        console.error('Error al eliminar la publicación');
+      }
     })
     .catch(error => {
-        console.error('Error en la solicitud DELETE:', error);
+      console.error('Error en la solicitud DELETE:', error);
     });
 }
