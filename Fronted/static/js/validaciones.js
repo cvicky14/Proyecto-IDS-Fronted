@@ -38,12 +38,13 @@ registerLink.addEventListener('click', function (e) {
     formTitle.textContent = "Create Account";
 });
 
-loginLink.addEventListener('click', function (e) {
-    e.preventDefault();
-    registerForm.style.display = 'none';
-    loginForm.style.display = 'block';
-    formTitle.textContent = "LOG IN";
-});
+
+// loginLink.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     registerForm.style.display = 'none';
+//     loginForm.style.display = 'block';
+//     formTitle.textContent = "LOG IN";
+// });
 
 function toggleHelpCenterFields() {
     const userType = document.getElementById('user-type').value;

@@ -120,7 +120,7 @@ def PublicacionCrear():
     nm = ""
     if imagen.filename != "":
         nm = horaActual + "_" + imagen.filename
-        imagen.save("static/imagenesServer/" + nm)
+        imagen.save("/static/imagenesServer/" + nm)
 
     parametros = {
         "id": 0,
@@ -175,7 +175,6 @@ def CambiarImgUsuario(accion):
             else:
                 response = {"estado": 0, "mensaje": "Porfavor verificar los datos"}
                 return json.dumps(response)
-    
 
     if accion == "EliminarImg":
         parametros = {
@@ -200,8 +199,8 @@ def CambiarImgUsuario(accion):
     return json.dumps(response)
 
 
-@app.route("/Buscar", methods=["GET"])
-def buscar():
+@app.route("/Publicaciones", methods=["GET"])
+def publicaciones():
     correo_usuario = session.get("menus").get("correo")
     if correo_usuario:
         url = "http://127.0.0.1:8000/ListarPporUsuario/<correo>"
@@ -209,9 +208,26 @@ def buscar():
         response = requests.get(url, params=parametros)
         if response.status_code == 200:
             publicaciones = response.json()
-            return render_template("publicaciones.html", publicaciones=publicaciones, correo_usuario=correo_usuario)
-    return render_template("publicaciones.html", publicaciones=[], correo_usuario=correo_usuario)
+            return render_template(
+                "publicaciones.html",
+                publicaciones=publicaciones,
+                correo_usuario=correo_usuario,
+            )
+    return render_template(
+        "publicaciones.html", publicaciones=[], correo_usuario=correo_usuario
+    )
 
+@app.route("/verAyudas")
+def VerAyudasAdmon():
+    doce = session.get("menus")
+    url = "http://127.0.0.1:8000/SeleccionarEstadosA"
+        
+    peticion = requests.get(url)
+    if peticion.status_code == 200:
+        datos = peticion.json()
+        
+    print(datos)
+    return render_template("verAyudas.html", menu=doce, tabla = datos)
 
 
 
