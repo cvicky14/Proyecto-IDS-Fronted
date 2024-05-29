@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, request, session, url_for, j
 import requests
 import json
 from datetime import datetime
+import os
 
 app = Flask(__name__, template_folder="templates")
 app.secret_key = "casae12312"
@@ -35,6 +36,12 @@ def Inicio():
     doce = session.get("menus")
 
     return render_template("inicio.html", menu=doce)
+
+@app.route("/Cuidados")
+def Cuidados():
+    doce = session.get("Cuidados")
+
+    return render_template("cuidados.html", menu=doce)
 
 
 @app.route("/Salir")
@@ -143,6 +150,7 @@ def PublicacionCrear():
 def CambiarImgUsuario(accion):
     imagen = request.files["txtimagen"]
     idCorreo = request.form["idCorreo"]
+    imgAnterior = request.form["imgAnterior"]
     url = "http://127.0.0.1:8000/actualizarImagenUsuario"
     tiempo = datetime.now()
     horaActual = tiempo.strftime("%Y%H%M%S")
@@ -163,6 +171,8 @@ def CambiarImgUsuario(accion):
                 "idCentroAyuda": 0,
             }
             x = requests.put(url, data=json.dumps(parametros))
+            if imgAnterior != "default.jpg":
+                os.remove("static/imagenesServer/" + imgAnterior)
             if x.status_code == 201:
                 response = {"estado": 1, "mensaje": "Foto Modificada Correctamente!!"}
                 return json.dumps(response)
@@ -182,6 +192,8 @@ def CambiarImgUsuario(accion):
             "idCentroAyuda": 0,
         }
         y = requests.put(url, data=json.dumps(parametros))
+        if imgAnterior != "default.jpg":
+            os.remove("static/imagenesServer/" + imgAnterior)
 
         if y.status_code == 201:
             response = {"estado": 1, "mensaje": "Foto Restablecida Correctamente!!"}
@@ -211,12 +223,31 @@ def publicaciones():
         "publicaciones.html", publicaciones=[], correo_usuario=correo_usuario
     )
 
+
 @app.route("/verAyudas")
 def VerAyudasAdmon():
     doce = session.get("menus")
+    url = "http://127.0.0.1:8000/SeleccionarEstadosA"
 
-    return render_template("verAyudas.html", menu=doce)
+    peticion = requests.get(url)
+    if peticion.status_code == 200:
+        datos = peticion.json()
 
+    print(datos)
+    return render_template("verAyudas.html", menu=doce, tabla=datos)
+
+
+@app.route("/admonusuarios")
+def AdmonUsuarios():
+    doce = session.get("menus")
+    url = "http://127.0.0.1:8000/viewAdmonUser"
+
+    peticion = requests.get(url)
+    if peticion.status_code == 200:
+        datos = peticion.json()
+
+    print(datos)
+    return render_template("administrarUsuario.html", menu=doce, tabla=datos)
 
 @app.route("/ActualizarPublicacion", methods=["PUT"])
 def actualizar_publicacion():
