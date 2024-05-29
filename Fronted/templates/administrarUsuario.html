@@ -37,50 +37,49 @@
 
     <!-- TABLA DINAMICA PARA ADMINISTRAR LAS AYUDAS -->
     <div class="tablaAyuda">
-      <h2 style="left: 0;">Historial Animales Ayudados</h2>
+      <h2 style="left: 0">ADMINISTRAR USUARIOS</h2>
       <div class="contenedor">
         <table id="tableAyuda" class="display" style="width: 100%">
           <thead style="width: 100%">
             <tr>
-              <th>Publicado por</th>
-              <th>Eleccion</th>
-              <th>Titulo publicacion</th>
-              <th>descripcion</th>
-              <th>foto</th>
-              <th>RescatadoPor</th>
-              <th>FechaPublicacion</th>
-              <th>Fecha rescate</th>
-           
+              <th>Username</th>
+              <th>Correo</th>
+              <th>Imagen</th>
+              <th>Privilegio</th>
+              <th>Fecha Creacion</th>
+              <th>Accion</th>
             </tr>
           </thead>
           <tbody>
             {% for t in tabla %}
             <tr>
+              <td>{{t["username"]}}</td>
               <td>{{t["correo"]}}</td>
-              <td>{{t["opcionAnimal"]}}</td>
-              <td>{{t["titulo"]}}</td>
-              <td>{{t["descripcion"]}}</td>
               <td>
-                <img src="/static/imagenesServer/{{t['fotoa']}}" alt="" />
+                <img
+                  src="/static/imagenesServer/{{t['imagenUsuario']}}"
+                  alt=""
+                />
               </td>
-              <td>{{t["correo2"]}}</td>
-              <td>{{t["fechap"]}}</td>
-              <td>{{t["fechae"]}}</td>
-              
+              <td>{{t["privilegio"]}}</td>
+              <td>{{t["fecha"]}}</td>
+              <td>
+                <form action="/EliminarUserSistem" method="POST">
+                  <input type="hidden" value="{{t['id']}}" />
+                  <button style="background-color: rgb(255, 0, 115); border: none; border-radius: 5px; padding: 10px; cursor: pointer; color: white;" >Eliminar</button>
+                </form>
+              </td>
             </tr>
             {% endfor %}
           </tbody>
           <tfoot>
             <tr>
-              <th>Publicado por</th>
-              <th>Eleccion</th>
-              <th>Titulo publicacion</th>
-              <th>descripcion</th>
-              <th>Foto</th>
-              <th>RescatadoPor</th>
-              <th>FechaPublicacion</th>
-              <th>Fecha rescate</th>
-            
+              <th>Username</th>
+              <th>Correo</th>
+              <th>Imagen</th>
+              <th>Privilegio</th>
+              <th>Fecha Creacion</th>
+              <th>Accion</th>
             </tr>
           </tfoot>
         </table>
