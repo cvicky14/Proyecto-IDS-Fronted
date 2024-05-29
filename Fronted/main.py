@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, session, url_for
+from flask import Flask, render_template, redirect, request, session, url_for, jsonify
 import requests
 import json
 from datetime import datetime
@@ -217,6 +217,55 @@ def VerAyudasAdmon():
 
     return render_template("verAyudas.html", menu=doce)
 
+
+@app.route("/ActualizarPublicacion", methods=["PUT"])
+def actualizar_publicacion():
+    idP = request.form["idPublicacion"]
+    titulo = request.form["titulo"]
+    descripcion = request.form["descripcion"]
+    lugarDireccion = request.form["lugarDireccion"]
+    imagen = request.files["imagen"]
+    urlUs  = "http://127.0.0.1:8000/Obteneneriduser/<correo>"
+    correoU = request.form["correoU"]
+    CorreoUs = {"correo": correoU}
+
+    x = requests.get(urlUs, CorreoUs)
+    if x.status_code == 200:
+        data = x.json()
+        idUser = data["id"]
+    else:
+        response = {"estado": 0, "mensaje": "No se pudo obtener el ID del usuario"}
+        return jsonify(response)
+
+    urlP = "http://127.0.0.1:8000/ActualizarPublicacion"
+    tiempo = datetime.now()
+    horaA = tiempo.strftime("%Y%H%M%S")
+    nm = ""
+    if imagen.filename != "":
+        nm = horaA + "_" + imagen.filename
+        imagen.save("/static/imagenesServer/" + nm)
+
+    parametros = {
+        "id": int(idP),
+        "titulo": str(titulo),
+        "descripcion": str(descripcion),
+        "lugar": str(lugarDireccion),
+        "foto": str(nm),
+        "fechaHora": "",
+        "idUser": int(idUser),
+        "estado": 0,
+        "idCentro": 0,
+        "user": "",
+        "correo": "",
+        "imagenUsuario": "",
+    }
+    x = requests.put(urlP, data=json.dumps(parametros))
+    if x.status_code == 201:
+        response = {"estado": 1, "mensaje": "Publicacion Correctamente!!"}
+        return json.dumps(response)
+    else:
+        response = {"estado": 0, "mensaje": "Porfavor verificar los datos"}
+        return json.dumps(response)
 
 
 if __name__ == "__main__":

@@ -23,6 +23,7 @@
                     <th>Lugar</th>
                     <th>Fecha y Hora</th>
                     <th>Imagen</th>
+
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -38,7 +39,7 @@
                     </td>
                     
                     <td class="boton-td">
-                        <button><i class="fas fa-edit"></i></button>
+                        <button onclick="mostrarFormulario('{{ publicacion.id }}')"><i class="fas fa-edit"></i></button>
                         <button onclick="eliminarPublicacion('{{ publicacion.id }}')" class="eliminarBtn"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>
@@ -46,6 +47,38 @@
             </tbody>
         </table>
     </div>
-</body>
+    <div id="formPublicacion" class="formPublicacion" style="display: none;">
+        {% for publicacion in publicaciones %}
+        <form id="updateForm_{{ publicacion.id }}" action="/ActualizarPublicacion" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="idPublicacion" value="{{ publicacion.id }}">
+            <div class="form-group">
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" value="{{ publicacion.titulo }}">
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion">{{ publicacion.descripcion }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="lugarDireccion">Lugar Dirección:</label>
+                <input type="text" id="lugarDireccion" name="lugarDireccion" value="{{ publicacion.lugar }}">
+            </div>
+            <div class="form-group">
+                <label for="imagen">Imagen:</label>
+                <img src="../static/imagenesServer/{{ publicacion.foto }}" alt="Imagen de la Publicación" class="thumbnail">
+                <input type="file" id="imagen" name="imagen" class="imagen">
+            </div>
+            <input type="hidden" id="correoU" name="correoU" value="{{ publicacion.idUser }}">
+            <button type="submit">Actualizar Publicación</button>
+            {% endfor %}
+        </form>
+    </div>
 <script src="/static/js/publicaciones.js"></script>
+<script>
+    function mostrarFormulario(idPublicacion) {
+        var formulario = document.getElementById("formPublicacion");
+        formulario.style.display = "block";
+    }
+</script>
+</body>
 </html>
