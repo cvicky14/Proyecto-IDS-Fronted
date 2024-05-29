@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menú de Inicio</title>
+    <link rel="stylesheet" href="../static/css/inicio.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/static/css/modal.css" />
+    <script src="/static/lib/sweetalert2.min.js"></script>
+    <script src="/static/lib/jQuery3.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="social-menu">{{menu.menuitems | safe}}</nav>
+    </header>
+
+    <!-- casa docececece-->
+
+    <div class="publicaciones-container">
+      <div class="bar" id="bar"><i class="bx bx-menu"></i></div>
+      <div class="menu" id="menu">
+        <div class="usuarioB">
+          <div class="imageU">
+            <img
+              id="imgUsu"
+              src="/static/imagenesServer/{{menu.imagenUser}}"
+              alt=""
+            />
+          </div>
+          <div class="user-info">
+            <h3>Bienvenido(a)</h3>
+            <p><i class="fas fa-user-circle"></i> {{menu.correo}}</p>
+          </div>
+        </div>
+        <a href="#"><i class="fas fa-paw"></i> Adopción de Mascotas</a>
+        <a href="#"><i class="fas fa-user-md"></i> Atención Veterinaria</a>
+        <a href="#"><i class="fas fa-hotel"></i> Albergue Temporal</a>
+        <a href="#"
+          ><i class="fas fa-book-reader"></i> Educación y Concientización</a
+        >
+        <a href="#"><i class="fas fa-tasks"></i> Programas de Esterilización</a>
+        <a href="#"
+          ><i class="fas fa-exclamation-triangle"></i> Denuncias de Maltrato</a
+        >
+        <a href="#"><i class="fas fa-hand-holding-usd"></i> Donaciones</a>
+        <a href="#"><i class="fas fa-address-book"></i> Contacto</a>
+        <div class="imagem">
+          <img src="/static/imagenes/home.png" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENEDOR 2 -->
+
+    <div class="container2">
+      <div class="tituloHome">
+        <h1>
+          PetProtege <i class="fas fa-dog"></i
+          ><i class="fas fa-exclamation-triangle"></i>
+        </h1>
+        <div class="switch">
+          <input type="checkbox" id="switch-mode" hidden />
+          <label for="switch-mode" class="switch-mode"></label>
+        </div>
+      </div>
+      <div id="PublicacionesP" class="Publicaciones">
+        <article class="forecast">
+            <h1>Responsabilidades al adoptar un animal</h1>
+            <center>
+                <article class="day-forecast">
+                    <h2>Responsabilidades diarias</h2>
+                      <p>Proveer una dieta equilibrada: Ofrece una dieta adecuada según la especie, edad, tamaño y necesidades específicas del animal.</p>
+                      <p>Hidratación constante: Asegúrate de que siempre tenga acceso a agua limpia y fresca.</p>
+                      <p>Ejercicio diario: Proporciona el nivel adecuado de ejercicio según la especie y la energía del animal.</p>
+                      <p>Estimulación mental: Los animales necesitan actividades que estimulen su mente, como juguetes interactivos, rompecabezas y entrenamiento de obediencia.</p>
+                      <p>Limpieza regular: Mantén la higiene del animal según las necesidades específicas de su especie, incluyendo el cepillado, el baño y la limpieza de sus espacios.</p>
+                      <p>Revisión de orejas, dientes y uñas: Verifica regularmente la salud de sus orejas, dientes y uñas para prevenir problemas.</p>
+                </article>
+                <article class="day-forecast">
+                     <h2>Responsabilidades Médicas</h2>
+                      <p>Chequeos regulares: Programa visitas al veterinario para revisiones generales y vacunaciones según las recomendaciones.</p>
+                      <p>Prevención de parásitos: Administra tratamientos preventivos contra parásitos como pulgas, garrapatas y parásitos internos.</p>
+                      <p>Mantener las vacunas al día: Es esencial que tu animal reciba todas las vacunas necesarias para prevenir enfermedades comunes.</p>
+                      <p>Control de reproducción: Considera la esterilización o castración para evitar problemas de salud y contribuir al control de la población de animales.</p>
+                </article>
+                <article class="day-forecast">
+                    <h2>Responsabilidades de Comportamiento</h2> 
+                      <p>Interacción con otros animales y personas: Socializa al animal para que se acostumbre a diferentes ambientes, personas y otros animales.</p>
+                      <p>Exposición a estímulos variados: Introduce al animal a diferentes ruidos, lugares y situaciones para evitar miedos y comportamientos problemáticos.</p>
+                      <p>Entrenamiento básico de obediencia: Enséñale comandos básicos para asegurar su seguridad y buen comportamiento.</p>
+                      <p>Refuerzo positivo: Utiliza métodos de refuerzo positivo para fomentar buenos comportamientos y fortalecer el vínculo con el animal.</p>
+                </article>
+                <article class="day-forecast">
+                    <h2>Responsabilidades Legales</h2>
+                      <p>Microchip y placa de identificación: Asegúrate de que el animal tenga un microchip registrado y, si es aplicable, una placa con tus datos de contacto.</p>
+                      <p>Registro: Cumple con las normativas locales sobre el registro de mascotas.</p>
+                      <p>Leyes locales: Infórmate sobre las leyes y regulaciones locales relativas a la tenencia de animales, como el uso de correa en espacios públicos y las restricciones de ciertas especies o razas.</p>
+                 </article>
+                 <article class="day-forecast">
+                  <h2>Responsabilidades Emocionales</h2>
+                      <p>Compromiso a largo plazo: Un animal es una responsabilidad a largo plazo, que puede durar muchos años, requiriendo tiempo, atención y amor durante toda su vida.</p>
+                      <p>Atención a sus necesidades emocionales: Los animales necesitan sentirse parte de la familia, requieren compañía, cariño y tiempo de calidad contigo.</p>
+                      <p>Paciencia y comprensión: Si el animal presenta problemas de comportamiento, busca soluciones con paciencia, ya sea mediante entrenamiento adicional o consultando con un especialista en comportamiento animal.</p>
+                </article> 
+                <article class="day-forecast">
+                    <h2>Adoptar un animal es un acto de amor y responsabilidad. Asegúrate de estar preparado para brindar un hogar seguro, amoroso y adecuado para tu nuevo compañero. Esta responsabilidad no solo mejorará la vida del animal, sino que también enriquecerá la tuya.</h2>
+                  </article> 
+            </center>
+        </article>
+      </div>
+      <!-- INICIO PUBLICACIONES -->
+
+    </div>
+
+    <div class="theme-toggle" id="theme-toggle">
+      <i class="fas fa-adjust"></i>
+    </div>
+
+    {%include 'miModal.html'%} {%include 'miModalOpciones.html'%}
+
+    <!--<script src="/static/js/inicio.js"></script> -->
+    <script src="/static/js/OpcionesAnimales.js"></script>
+  </body>
+</html>

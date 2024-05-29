@@ -37,6 +37,12 @@ def Inicio():
 
     return render_template("inicio.html", menu=doce)
 
+@app.route("/Cuidados")
+def Cuidados():
+    doce = session.get("Cuidados")
+
+    return render_template("cuidados.html", menu=doce)
+
 
 @app.route("/Salir")
 def logout():
