@@ -43,6 +43,18 @@ def Cuidados():
 
     return render_template("cuidados.html", menu=doce)
 
+@app.route("/donaciones")
+def donaciones():
+    doce = session.get("donaciones")
+
+    return render_template("donaciones.html", menu=doce)
+
+@app.route("/contacto")
+def contacto():
+    doce = session.get("contacto")
+
+    return render_template("contacto.html", menu=doce)
+
 @app.route("/formularioAdopcion")
 def formularioAdopcion():
     doce = session.get("formularioAdopcion")

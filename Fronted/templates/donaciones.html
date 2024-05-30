@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menú de Inicio</title>
+    <link rel="stylesheet" href="../static/css/inicio.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/static/css/modal.css" />
+    <script src="/static/lib/sweetalert2.min.js"></script>
+    <script src="/static/lib/jQuery3.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="social-menu">{{menu.menuitems | safe}}</nav>
+    </header>
+
+    <!-- casa docececece-->
+
+    <div class="publicaciones-container">
+      <div class="bar" id="bar"><i class="bx bx-menu"></i></div>
+      <div class="menu" id="menu">
+        <div class="usuarioB">
+          <div class="imageU">
+            <img
+              id="imgUsu"
+              src="/static/imagenesServer/{{menu.imagenUser}}"
+              alt=""
+            />
+          </div>
+          <div class="user-info">
+            <h3>Bienvenido(a)</h3>
+            <p><i class="fas fa-user-circle"></i> {{menu.correo}}</p>
+          </div>
+        </div>
+        <a href="#"><i class="fas fa-paw"></i> Adopción de Mascotas</a>
+        <a href="#"><i class="fas fa-user-md"></i> Atención Veterinaria</a>
+        <a href="#"><i class="fas fa-hotel"></i> Albergue Temporal</a>
+        <a href="#"
+          ><i class="fas fa-book-reader"></i> Educación y Concientización</a
+        >
+        <a href="#"><i class="fas fa-tasks"></i> Programas de Esterilización</a>
+        <a href="#"
+          ><i class="fas fa-exclamation-triangle"></i> Denuncias de Maltrato</a
+        >
+        <a href="#"><i class="fas fa-hand-holding-usd"></i> Donaciones</a>
+        <a href="#"><i class="fas fa-address-book"></i> Contacto</a>
+        <div class="imagem">
+          <img src="/static/imagenes/home.png" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENEDOR 2 -->
+
+    <div class="container2">
+      <div class="tituloHome">
+        <h1>
+          PetProtege <i class="fas fa-dog"></i
+          ><i class="fas fa-exclamation-triangle"></i>
+        </h1>
+        <div class="switch">
+          <input type="checkbox" id="switch-mode" hidden />
+          <label for="switch-mode" class="switch-mode"></label>
+        </div>
+      </div>
+      <div id="PublicacionesP" class="Publicaciones">
+        <article class="forecast">
+            <h1>Donaciones</h1>
+            <center>
+                <article class="day-forecast">
+                    <h2>¡Apoya nuestra causa!</h2>
+                      <p>Gracias por considerar hacer una donación para apoyar la misión de PetProtege. Tu generosidad nos permite colaborar con la sociedad y asi mismo con lo animales que padecen de vivir en circunstancias de calle.</p>
+                </article>
+                <article class="day-forecast">
+                     <h2>¿Por Qué Donar?</h2>
+                     <p>Cada año, miles de animales son abandonados o nacen en las calles, enfrentándose a enfermedades, hambre y peligros constantes. En PetProtege, estamos comprometidos a rescatar, rehabilitar y encontrar hogares amorosos para estos animales necesitados. Con tu ayuda, podemos proporcionar refugio, atención veterinaria, alimentos y amor a los animales sin hogar, y darles una segunda oportunidad en la vida.</p>
+                </article>
+                <article class="day-forecast">
+                    <h2>¿Cómo Donar?</h2> 
+                      <h2>Tienes varias opciones para contribuir:</h2>
+                      <p>1.Transferencia Bancaria: Puedes realizar una transferencia directa a nuestra cuenta bancaria utilizando la siguiente información: Cuenta monetaria Banrural no. 123456789 a nombre de PetProtege.</p>
+                      <p>2.Donación por Correo: Si prefieres enviar un cheque, por favor hazlo a nombre de PetProtege y envíalo a nuestra dirección 5ta avenida sur casa no. 85 Antigua Guatemala.</p>
+                      <p>Donación de Artículos: Aceptamos donaciones de alimentos para animales, suministros veterinarios, mantas, juguetes y otros artículos que puedan ayudar a nuestros rescatados. Para coordinar la entrega, por favor contáctanos en PetProtegeGT@gmail.com o al 87946612.</p>
+                </article>
+                <article class="day-forecast">
+                    <h2>¿Cómo Utilizaremos tu Donación?</h2>
+                        <p>Todas las donaciones que recibimos se utilizarán directamente para el cuidado y bienestar de los animales rescatados. Esto incluye atención veterinaria, alimentación, alojamiento y programas de adopción.</p>
+                        <p></p>
+                        <p></p>
+                    <h2>¡Gracias por tu Apoyo!</h2>
+                        <p>En nombre de todos los animales que ayudamos, queremos expresar nuestro sincero agradecimiento por tu generosidad. Tu apoyo hace posible nuestro trabajo y salva vidas. Si tienes alguna pregunta o necesitas más información, no dudes en ponerte en contacto con nosotros.</p>
+                        <p></p>
+                </article> 
+            </center>
+        </article>
+      </div>
+      <!-- INICIO PUBLICACIONES -->
+
+    </div>
+
+    <div class="theme-toggle" id="theme-toggle">
+      <i class="fas fa-adjust"></i>
+    </div>
+
+    {%include 'miModal.html'%} {%include 'miModalOpciones.html'%}
+
+    <!--<script src="/static/js/inicio.js"></script> -->
+    <script src="/static/js/OpcionesAnimales.js"></script>
+  </body>
+</html>
