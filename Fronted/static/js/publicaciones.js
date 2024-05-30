@@ -111,3 +111,31 @@ function eliminarPublicacion(idPublicacion) {
       console.error('Error en la solicitud DELETE:', error);
     });
 }
+
+function mostrarFormulario(idPublicacion) {
+  var formulario = document.getElementById("formPublicacion_" + idPublicacion);
+  formulario.style.display = "block";
+}
+
+function cerrarFormulario(idPublicacion) {
+  var formulario = document.getElementById("formPublicacion_" + idPublicacion);
+  formulario.style.display = "none";
+}
+
+function previewImagen(idPublicacion) {
+  var file = document.getElementById("imagen_" + idPublicacion).files[0];
+  var reader = new FileReader();
+  reader.onload = function (e) {
+      document.getElementById("imagenPreview_" + idPublicacion).src = e.target.result;
+  }
+  reader.readAsDataURL(file);
+}
+
+window.onclick = function (event) {
+  var modals = document.getElementsByClassName("modal");
+  for (var i = 0; i < modals.length; i++) {
+      if (event.target == modals[i]) {
+          modals[i].style.display = "none";
+      }
+  }
+}

@@ -47,38 +47,36 @@
             </tbody>
         </table>
     </div>
-    <div id="formPublicacion" class="formPublicacion" style="display: none;">
-        {% for publicacion in publicaciones %}
-        <form id="updateForm_{{ publicacion.id }}" action="/ActualizarPublicacion" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="idPublicacion" value="{{ publicacion.id }}">
-            <div class="form-group">
-                <label for="titulo">Título:</label>
-                <input type="text" id="titulo" name="titulo" value="{{ publicacion.titulo }}">
-            </div>
-            <div class="form-group">
-                <label for="descripcion">Descripción:</label>
-                <textarea id="descripcion" name="descripcion">{{ publicacion.descripcion }}</textarea>
-            </div>
-            <div class="form-group">
-                <label for="lugarDireccion">Lugar Dirección:</label>
-                <input type="text" id="lugarDireccion" name="lugarDireccion" value="{{ publicacion.lugar }}">
-            </div>
-            <div class="form-group">
-                <label for="imagen">Imagen:</label>
-                <img src="../static/imagenesServer/{{ publicacion.foto }}" alt="Imagen de la Publicación" class="thumbnail">
-                <input type="file" id="imagen" name="imagen" class="imagen">
-            </div>
-            <input type="hidden" id="correoU" name="correoU" value="{{ publicacion.idUser }}">
-            <button type="submit">Actualizar Publicación</button>
-            {% endfor %}
-        </form>
+    <!-- Formularios en ventanas emergentes -->
+    {% for publicacion in publicaciones %}
+    <div id="formPublicacion_{{ publicacion.id }}" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarFormulario('{{ publicacion.id }}')">&times;</span>
+            <form id="updateForm_{{ publicacion.id }}" action="/ActualizarPublicacion" method="POST" enctype="multipart/form-data">
+                <input type="text" name="idPublicacion" value="{{ publicacion.id }}">
+                <div class="form-group">
+                    <label for="titulo">Título:</label>
+                    <input type="text" id="titulo_{{ publicacion.id }}" name="titulo" value="{{ publicacion.titulo }}">
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion_{{ publicacion.id }}" name="descripcion">{{ publicacion.descripcion }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="lugarDireccion">Lugar Dirección:</label>
+                    <input type="text" id="lugarDireccion_{{ publicacion.id }}" name="lugarDireccion" value="{{ publicacion.lugar }}">
+                </div>
+                <div class="form-group">
+                    <label for="imagen">Imagen:</label>
+                    <img id="imagenPreview_{{ publicacion.id }}" src="../static/imagenesServer/{{ publicacion.foto }}" alt="Imagen de la Publicación" class="thumbnail">
+                    <input type="file" id="imagen_{{ publicacion.id }}" name="imagen" class="imagen" onchange="previewImagen('{{ publicacion.id }}')">
+                </div>
+                <input type="text" id="correoU_{{ publicacion.id }}" name="correoU" value="{{ publicacion.idUser}}">
+                <button type="submit">Actualizar Publicación</button>
+            </form>
+        </div>
     </div>
+    {% endfor %}
 <script src="/static/js/publicaciones.js"></script>
-<script>
-    function mostrarFormulario(idPublicacion) {
-        var formulario = document.getElementById("formPublicacion");
-        formulario.style.display = "block";
-    }
-</script>
 </body>
 </html>
