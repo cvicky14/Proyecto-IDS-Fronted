@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menú de Inicio</title>
+    <link rel="stylesheet" href="../static/css/inicio.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/static/css/modal.css" />
+    <script src="/static/lib/sweetalert2.min.js"></script>
+    <script src="/static/lib/jQuery3.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="social-menu">{{menu.menuitems | safe}}</nav>
+    </header>
+
+    <!-- casa docececece-->
+
+    <div class="publicaciones-container">
+      <div class="bar" id="bar"><i class="bx bx-menu"></i></div>
+      <div class="menu" id="menu">
+        <div class="usuarioB">
+          <div class="imageU">
+            <img
+              id="imgUsu"
+              src="/static/imagenesServer/{{menu.imagenUser}}"
+              alt=""
+            />
+          </div>
+          <div class="user-info">
+            <h3>Bienvenido(a)</h3>
+            <p><i class="fas fa-user-circle"></i> {{menu.correo}}</p>
+          </div>
+        </div>
+        <a href="#"><i class="fas fa-paw"></i> Adopción de Mascotas</a>
+        <a href="#"><i class="fas fa-user-md"></i> Atención Veterinaria</a>
+        <a href="#"><i class="fas fa-hotel"></i> Albergue Temporal</a>
+        <a href="#"
+          ><i class="fas fa-book-reader"></i> Educación y Concientización</a
+        >
+        <a href="#"><i class="fas fa-tasks"></i> Programas de Esterilización</a>
+        <a href="#"
+          ><i class="fas fa-exclamation-triangle"></i> Denuncias de Maltrato</a
+        >
+        <a href="#"><i class="fas fa-hand-holding-usd"></i> Donaciones</a>
+        <a href="#"><i class="fas fa-address-book"></i> Contacto</a>
+        <div class="imagem">
+          <img src="/static/imagenes/home.png" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENEDOR 2 -->
+
+    <div class="container2">
+      <div class="tituloHome">
+        <h1>
+          PetProtege <i class="fas fa-dog"></i
+          ><i class="fas fa-exclamation-triangle"></i>
+        </h1>
+        <div class="switch">
+          <input type="checkbox" id="switch-mode" hidden />
+          <label for="switch-mode" class="switch-mode"></label>
+        </div>
+      </div>
+      <div id="PublicacionesP" class="Publicaciones">
+        <article class="forecast">
+            <h1>Responsabilidades al adoptar un animal</h1>
+            <center>
+                <form method="post" action="/send/">
+                    Usuario:
+                    <input name="usuario">
+                    <input type="submit" value="Enviar">
+                    <input type="submit" value="Enviar al dpto. marketing"
+                           formaction="/send/?dpto=mkt" formtarget="_blank">
+                    <input type="submit" value="Enviar al dpto. informática"
+                           formaction="/send/?dpto=sat" formtarget="_blank">
+                    <input type="submit" value="Testear validaciones de backend"
+                           formtarget="_blank" formnovalidate>
+                  </form>
+            </center>
+        </article>
+      </div>
+      <!-- INICIO PUBLICACIONES -->
+
+    </div>
+
+    <div class="theme-toggle" id="theme-toggle">
+      <i class="fas fa-adjust"></i>
+    </div>
+
+    {%include 'miModal.html'%} {%include 'miModalOpciones.html'%}
+
+    <!--<script src="/static/js/inicio.js"></script> -->
+    <script src="/static/js/OpcionesAnimales.js"></script>
+  </body>
+</html>
