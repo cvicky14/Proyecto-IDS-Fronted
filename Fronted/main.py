@@ -194,7 +194,7 @@ def CambiarImgUsuario(accion):
                 "idCentroAyuda": 0,
             }
             x = requests.put(url, data=json.dumps(parametros))
-            if imgAnterior != "default.jpeg":
+            if imgAnterior != "default.jpg":
                 os.remove("static/imagenesServer/" + imgAnterior)
             if x.status_code == 201:
                 response = {"estado": 1, "mensaje": "Foto Modificada Correctamente!!"}
@@ -287,7 +287,7 @@ def actualizar_publicacion():
     nm = ""
     if imagen.filename != "":
         nm = horaA + "_" + imagen.filename
-        imagen.save("C:/Users/vicky/OneDrive/Escritorio/Proyecto IDS/Proyecto-IDS-Fronted/Fronted/static/imagenesServer/" + nm)
+        imagen.save("/static/imagenesServer/" + nm)
 
     parametros = {
         "id": int(idP),

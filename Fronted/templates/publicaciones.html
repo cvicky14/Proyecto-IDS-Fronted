@@ -53,7 +53,7 @@
         <div class="modal-content">
             <span class="close" onclick="cerrarFormulario('{{ publicacion.id }}')">&times;</span>
             <form id="updateForm_{{ publicacion.id }}" action="/ActualizarPublicacion" method="POST" enctype="multipart/form-data">
-                <input type="text" name="idPublicacion" value="{{ publicacion.id }}">
+                <input type="hidden" name="idPublicacion" value="{{ publicacion.id }}">
                 <div class="form-group">
                     <label for="titulo">Título:</label>
                     <input type="text" id="titulo_{{ publicacion.id }}" name="titulo" value="{{ publicacion.titulo }}">
@@ -71,7 +71,7 @@
                     <img id="imagenPreview_{{ publicacion.id }}" src="../static/imagenesServer/{{ publicacion.foto }}" alt="Imagen de la Publicación" class="thumbnail">
                     <input type="file" id="imagen_{{ publicacion.id }}" name="imagen" class="imagen" onchange="previewImagen('{{ publicacion.id }}')">
                 </div>
-                <input type="text" id="correoU_{{ publicacion.id }}" name="correoU" value="{{ publicacion.idUser}}">
+                <input type="hidden" id="correoU_{{ publicacion.id }}" name="correoU" value="{{ publicacion.idUser}}">
                 <button type="submit">Actualizar Publicación</button>
             </form>
         </div>
