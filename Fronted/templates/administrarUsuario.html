@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ayudas</title>
+    <link rel="stylesheet" href="../static/css/inicio.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/static/css/modal.css" />
+    <script src="/static/lib/sweetalert2.min.js"></script>
+    <script src="/static/lib/jQuery3.js"></script>
+    <script src="/static/lib/jquery.dataTables.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="social-menu">{{menu.menuitems | safe}}</nav>
+    </header>
+    <!-- casa docececece-->
+    {%include 'containerPublica.html'%} {%include 'miModal.html'%}
+
+    <!-- TABLA DINAMICA PARA ADMINISTRAR LAS AYUDAS -->
+    <div class="tablaAyuda">
+      <h2 style="left: 0">ADMINISTRAR USUARIOS</h2>
+      <div class="contenedor">
+        <table id="tableAyuda" class="display" style="width: 100%">
+          <thead style="width: 100%">
+            <tr>
+              <th>Username</th>
+              <th>Correo</th>
+              <th>Imagen</th>
+              <th>Privilegio</th>
+              <th>Fecha Creacion</th>
+              <th>Accion</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for t in tabla %}
+            <tr>
+              <td>{{t["username"]}}</td>
+              <td>{{t["correo"]}}</td>
+              <td>
+                <img
+                  src="/static/imagenesServer/{{t['imagenUsuario']}}"
+                  alt=""
+                />
+              </td>
+              <td>{{t["privilegio"]}}</td>
+              <td>{{t["fecha"]}}</td>
+              <td>
+                <form action="/EliminarUserSistem" method="POST">
+                  <input type="hidden" value="{{t['id']}}" />
+                  <button style="background-color: rgb(255, 0, 115); border: none; border-radius: 5px; padding: 10px; cursor: pointer; color: white;" >Eliminar</button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Username</th>
+              <th>Correo</th>
+              <th>Imagen</th>
+              <th>Privilegio</th>
+              <th>Fecha Creacion</th>
+              <th>Accion</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <script src="/static/js/inicio.js"></script>
+
+    <script src="/static/js/actualizafoto.js"></script>
+    <script src="/static/js/ayudas.js"></script>
+  </body>
+</html>

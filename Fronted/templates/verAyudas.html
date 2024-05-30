@@ -37,7 +37,7 @@
 
     <!-- TABLA DINAMICA PARA ADMINISTRAR LAS AYUDAS -->
     <div class="tablaAyuda">
-      <h3>Historial Animales Ayudados</h3>
+      <h2 style="left: 0;">Historial Animales Ayudados</h2>
       <div class="contenedor">
         <table id="tableAyuda" class="display" style="width: 100%">
           <thead style="width: 100%">
@@ -50,6 +50,7 @@
               <th>RescatadoPor</th>
               <th>FechaPublicacion</th>
               <th>Fecha rescate</th>
+           
             </tr>
           </thead>
           <tbody>
@@ -59,10 +60,13 @@
               <td>{{t["opcionAnimal"]}}</td>
               <td>{{t["titulo"]}}</td>
               <td>{{t["descripcion"]}}</td>
-              <td>{{t["fotoa"]}}</td>
+              <td>
+                <img src="/static/imagenesServer/{{t['fotoa']}}" alt="" />
+              </td>
               <td>{{t["correo2"]}}</td>
               <td>{{t["fechap"]}}</td>
               <td>{{t["fechae"]}}</td>
+              
             </tr>
             {% endfor %}
           </tbody>
@@ -72,10 +76,11 @@
               <th>Eleccion</th>
               <th>Titulo publicacion</th>
               <th>descripcion</th>
-              <th>foto</th>
+              <th>Foto</th>
               <th>RescatadoPor</th>
               <th>FechaPublicacion</th>
               <th>Fecha rescate</th>
+            
             </tr>
           </tfoot>
         </table>

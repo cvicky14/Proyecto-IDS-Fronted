@@ -1,7 +1,8 @@
-from flask import Flask, render_template, redirect, request, session, url_for
+from flask import Flask, render_template, redirect, request, session, url_for, jsonify
 import requests
 import json
 from datetime import datetime
+import os
 
 app = Flask(__name__, template_folder="templates")
 app.secret_key = "casae12312"
@@ -160,6 +161,7 @@ def PublicacionCrear():
 def CambiarImgUsuario(accion):
     imagen = request.files["txtimagen"]
     idCorreo = request.form["idCorreo"]
+    imgAnterior = request.form["imgAnterior"]
     url = "http://127.0.0.1:8000/actualizarImagenUsuario"
     tiempo = datetime.now()
     horaActual = tiempo.strftime("%Y%H%M%S")
@@ -180,6 +182,8 @@ def CambiarImgUsuario(accion):
                 "idCentroAyuda": 0,
             }
             x = requests.put(url, data=json.dumps(parametros))
+            if imgAnterior != "default.jpeg":
+                os.remove("static/imagenesServer/" + imgAnterior)
             if x.status_code == 201:
                 response = {"estado": 1, "mensaje": "Foto Modificada Correctamente!!"}
                 return json.dumps(response)
@@ -199,6 +203,8 @@ def CambiarImgUsuario(accion):
             "idCentroAyuda": 0,
         }
         y = requests.put(url, data=json.dumps(parametros))
+        if imgAnterior != "default.jpg":
+            os.remove("static/imagenesServer/" + imgAnterior)
 
         if y.status_code == 201:
             response = {"estado": 1, "mensaje": "Foto Restablecida Correctamente!!"}
@@ -228,19 +234,70 @@ def publicaciones():
         "publicaciones.html", publicaciones=[], correo_usuario=correo_usuario
     )
 
+
 @app.route("/verAyudas")
 def VerAyudasAdmon():
     doce = session.get("menus")
     url = "http://127.0.0.1:8000/SeleccionarEstadosA"
-        
+
     peticion = requests.get(url)
     if peticion.status_code == 200:
         datos = peticion.json()
-        
+
     print(datos)
-    return render_template("verAyudas.html", menu=doce, tabla = datos)
+    return render_template("verAyudas.html", menu=doce, tabla=datos)
 
 
+@app.route("/admonusuarios")
+def AdmonUsuarios():
+    doce = session.get("menus")
+    url = "http://127.0.0.1:8000/viewAdmonUser"
+
+    peticion = requests.get(url)
+    if peticion.status_code == 200:
+        datos = peticion.json()
+
+    print(datos)
+    return render_template("administrarUsuario.html", menu=doce, tabla=datos)
+
+@app.route("/ActualizarPublicacion", methods=["POST"])
+def actualizar_publicacion():
+    idP = request.form["idPublicacion"]
+    titulo = request.form["titulo"]
+    descripcion = request.form["descripcion"]
+    lugarDireccion = request.form["lugarDireccion"]
+    imagen = request.files["imagen"]
+    idU = request.form["correoU"]
+
+    urlP = "http://127.0.0.1:8000/ActualizarPublicacion"
+    tiempo = datetime.now()
+    horaA = tiempo.strftime("%Y%H%M%S")
+    nm = ""
+    if imagen.filename != "":
+        nm = horaA + "_" + imagen.filename
+        imagen.save("C:/Users/vicky/OneDrive/Escritorio/Proyecto IDS/Proyecto-IDS-Fronted/Fronted/static/imagenesServer/" + nm)
+
+    parametros = {
+        "id": int(idP),
+        "titulo": str(titulo),
+        "descripcion": str(descripcion),
+        "lugar": str(lugarDireccion),
+        "foto": str(nm),
+        "fechaHora": "",
+        "idUser": int(idU),
+        "estado": 0,
+        "idCentro": 0,
+        "user": "",
+        "correo": "",
+        "imagenUsuario": "",
+    }
+    x = requests.put(urlP, data=json.dumps(parametros))
+    if x.status_code == 200:
+        response = {"estado": 1, "mensaje": "Publicacion Correctamente!!"}
+        return redirect(url_for("publicaciones"))
+    else:
+        response = {"estado": 0, "mensaje": "Porfavor verificar los datos"}
+        return json.dumps(response)
 
 
 if __name__ == "__main__":

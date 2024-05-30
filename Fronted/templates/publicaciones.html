@@ -23,6 +23,7 @@
                     <th>Lugar</th>
                     <th>Fecha y Hora</th>
                     <th>Imagen</th>
+
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -38,7 +39,7 @@
                     </td>
                     
                     <td class="boton-td">
-                        <button><i class="fas fa-edit"></i></button>
+                        <button onclick="mostrarFormulario('{{ publicacion.id }}')"><i class="fas fa-edit"></i></button>
                         <button onclick="eliminarPublicacion('{{ publicacion.id }}')" class="eliminarBtn"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>
@@ -46,6 +47,36 @@
             </tbody>
         </table>
     </div>
-</body>
+    <!-- Formularios en ventanas emergentes -->
+    {% for publicacion in publicaciones %}
+    <div id="formPublicacion_{{ publicacion.id }}" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarFormulario('{{ publicacion.id }}')">&times;</span>
+            <form id="updateForm_{{ publicacion.id }}" action="/ActualizarPublicacion" method="POST" enctype="multipart/form-data">
+                <input type="text" name="idPublicacion" value="{{ publicacion.id }}">
+                <div class="form-group">
+                    <label for="titulo">Título:</label>
+                    <input type="text" id="titulo_{{ publicacion.id }}" name="titulo" value="{{ publicacion.titulo }}">
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion_{{ publicacion.id }}" name="descripcion">{{ publicacion.descripcion }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="lugarDireccion">Lugar Dirección:</label>
+                    <input type="text" id="lugarDireccion_{{ publicacion.id }}" name="lugarDireccion" value="{{ publicacion.lugar }}">
+                </div>
+                <div class="form-group">
+                    <label for="imagen">Imagen:</label>
+                    <img id="imagenPreview_{{ publicacion.id }}" src="../static/imagenesServer/{{ publicacion.foto }}" alt="Imagen de la Publicación" class="thumbnail">
+                    <input type="file" id="imagen_{{ publicacion.id }}" name="imagen" class="imagen" onchange="previewImagen('{{ publicacion.id }}')">
+                </div>
+                <input type="text" id="correoU_{{ publicacion.id }}" name="correoU" value="{{ publicacion.idUser}}">
+                <button type="submit">Actualizar Publicación</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
 <script src="/static/js/publicaciones.js"></script>
+</body>
 </html>
