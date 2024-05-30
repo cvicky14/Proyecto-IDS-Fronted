@@ -43,6 +43,17 @@ def Cuidados():
 
     return render_template("cuidados.html", menu=doce)
 
+@app.route("/formularioAdopcion")
+def formularioAdopcion():
+    doce = session.get("formularioAdopcion")
+
+    return render_template("formularioAdopcion.html", menu=doce)
+
+@app.route("/reglamentoAdopcion")
+def reglamentoAdopcion():
+    doce = session.get("reglamentoAdopcion")
+
+    return render_template("reglamentoAdopcion.html", menu=doce)
 
 @app.route("/Salir")
 def logout():
