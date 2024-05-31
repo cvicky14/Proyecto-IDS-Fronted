@@ -1,139 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menú de Inicio</title>
-    <link rel="stylesheet" href="../static/css/inicio.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="/static/css/modal.css" />
-    <script src="/static/lib/sweetalert2.min.js"></script>
-    <script src="/static/lib/jQuery3.js"></script>
-  </head>
-  <body>
-    <header class="header">
-      <nav class="social-menu">{{menu.menuitems | safe}}</nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denuncias de Maltrato</title>
+    <link rel="stylesheet" href="/static/css/denuncias.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Denuncias de Maltrato <i class="fas fa-exclamation-triangle"></i></h1>
     </header>
-
-    <!-- casa docececece-->
-
-    <div class="publicaciones-container">
-      <div class="bar" id="bar"><i class="bx bx-menu"></i></div>
-      <div class="menu" id="menu">
-        <div class="usuarioB">
-          <div class="imageU">
-            <img
-              id="imgUsu"
-              src="/static/imagenesServer/{{menu.imagenUser}}"
-              alt=""
-            />
-          </div>
-          <div class="user-info">
-            <h3>Bienvenido(a)</h3>
-            <p><i class="fas fa-user-circle"></i> {{menu.correo}}</p>
-          </div>
+    <div class="container">
+        <div class="contenido">
+            <h2>¿Qué es el Maltrato Animal?</h2>
+            <p>El maltrato animal se refiere a cualquier acción que cause sufrimiento innecesario o daño a un animal. Puede manifestarse de diversas formas, incluyendo:</p>
+            <ul>
+                <li><i class="fas fa-check"></i> Abandono</li>
+                <li><i class="fas fa-check"></i> Negligencia</li>
+                <li><i class="fas fa-check"></i> Abuso físico</li>
+                <li><i class="fas fa-check"></i> Explotación</li>
+            </ul>
         </div>
-        <a href="#"><i class="fas fa-paw"></i> Adopción de Mascotas</a>
-        <a href="#"><i class="fas fa-user-md"></i> Atención Veterinaria</a>
-        <a href="#"><i class="fas fa-hotel"></i> Albergue Temporal</a>
-        <a href="#"
-          ><i class="fas fa-book-reader"></i> Educación y Concientización</a
-        >
-        <a href="#"><i class="fas fa-tasks"></i> Programas de Esterilización</a>
-        <a href="#"
-          ><i class="fas fa-exclamation-triangle"></i> Denuncias de Maltrato</a
-        >
-        <a href="#"><i class="fas fa-hand-holding-usd"></i> Donaciones</a>
-        <a href="#"><i class="fas fa-address-book"></i> Contacto</a>
-        <div class="imagem">
-          <img src="/static/imagenes/home.png" alt="" />
+        
+        <div class="contenido">
+            <h2>¿Cómo Denunciar Casos de Maltrato?</h2>
+            <p>Si presencias o sospechas de un caso de maltrato animal, es importante tomar acción. Aquí hay algunos pasos que puedes seguir para denunciar:</p>
+            <ul>
+                <li><i class="fas fa-check"></i> Reúne evidencia, como fotos o videos.</li>
+                <li><i class="fas fa-check"></i> Contacta a las autoridades locales, como la policía o el departamento de bienestar animal.</li>
+                <li><i class="fas fa-check"></i> Proporciona detalles específicos del incidente y la ubicación.</li>
+                <li><i class="fas fa-check"></i> Busca ayuda de organizaciones de derechos animales si es necesario.</li>
+            </ul>
         </div>
-      </div>
+        <p>Denunciar casos de maltrato animal es fundamental para proteger a los animales y garantizar su bienestar en la sociedad.</p>
     </div>
-
-    <!-- CONTENEDOR 2 -->
-
-    <div class="container2">
-      <div class="tituloHome">
-        <h1>
-          PetProtege <i class="fas fa-dog"></i
-          ><i class="fas fa-exclamation-triangle"></i>
-        </h1>
-        <div class="switch">
-          <input type="checkbox" id="switch-mode" hidden />
-          <label for="switch-mode" class="switch-mode"></label>
-        </div>
-      </div>
-      <div id="PublicacionesP" class="Publicaciones">
-        <article class="forecast">
-            <h1>Denuncias o actividad sospechoza</h1>
-            <center>
-                <article class="day-forecast">
-                    <h2></h2>
-                      <p>En PetProtege, nos dedicamos a publicar animales en situación de calle para fomentar su adopción. La seguridad y la integridad de nuestra comunidad son nuestras prioridades. Este documento proporciona una guía para denunciar actividades sospechosas en nuestra plataforma. Animamos a nuestros usuarios a denuncias cualquier comportamiento que considere inapropiado o sospechoso, para mantener un entorno seguro y confiable.</p>
-                </article>
-                <article class="day-forecast">
-                     <h1>Tipos de Actividad Sospechosa</h1>
-                     <h2>1. Publicaciones Fraudulentas</h2>
-                     <p>- Publicaciones que muestran información falsa o engañosa.</p>
-                     <p>- Imágenes alteradas o robadas de otras fuentes.</p>
-                     <p>- Publicaciones que solicitan dinero sin la intención de ayudar a los animales.</p>
-                </article>
-                <article class="day-forecast">
-                    <h2>2. Conducta Inapropiada</h2> 
-                      <p>- Mensajes ofensivos, abusivos o amenazantes.</p>  
-                      <p>- Acoso a otros usuarios a través de comentarios o mensajes privados.</p>
-                      <p>- Suplantación de identidad de otros usuarios o miembros del equipo de PetProtege.</p>                 
-                </article>
-                <article class="day-forecast">
-                    <h2>3. Vulneraciones de Seguridad</h2>
-                        <p>- Intentos de phishing o recolección de información personal de manera engañosa.</p>
-                        <p>- Actividades que intenten acceder a cuentas de otros usuarios sin autorización.</p>
-                        <p>- Enlaces maliciosos o archivos adjuntos que puedan contener virus o malware.</p>
-                </article>
-                <article class="day-forecast">
-                    <h2>Cómo Realizar una Denuncia</h2>
-                        <p>1. Recopilar Evidencias: Toma capturas de pantalla y guarda cualquier mensaje o información relevante.</p>
-                        <p>2. Puedes dirigirte a la opcion de dununcias cuando ingreses con tu cuenta</p>
-                </article>
-                <article class="day-forecast">
-                    <h2>Proceso de Evaluación</h2>
-                        <p>1. Recepción de la Denuncia: Una vez enviada, recibiremos tu denuncia y enviaremos una confirmación por correo electrónico.</p>
-                        <p>2. Revisión Inicial: Nuestro equipo revisará la denuncia y las evidencias proporcionadas.</p>
-                        <p>3. Investigación: Realizaremos una investigación más detallada si es necesario, incluyendo la revisión de la actividad del usuario reportado.</p>
-                        <p>4. Acciones Correctivas: Dependiendo de los hallazgos, tomaremos las acciones apropiadas, que pueden incluir la eliminación de publicaciones, suspensión de cuentas, o notificación a las autoridades correspondientes.</p>
-                        <p>5. Respuesta al Denunciante: Te mantendremos informado sobre el estado de tu denuncia y las acciones tomadas.</p>
-                        <p></p>
-                        <p></p>
-                    <h2>PetProtege se compromete a proteger la privacidad de todos los denunciantes. La información proporcionada en el formulario de denuncia será tratada con estricta confidencialidad y utilizada únicamente para los fines de la investigación. No compartiremos tus datos personales con terceros sin tu consentimiento, salvo que sea requerido por la ley.</h2>
-                </article> 
-            </center>
-        </article>
-      </div>
-      <!-- INICIO PUBLICACIONES -->
-
-    </div>
-
-    <div class="theme-toggle" id="theme-toggle">
-      <i class="fas fa-adjust"></i>
-    </div>
-
-    {%include 'miModal.html'%} {%include 'miModalOpciones.html'%}
-
-    <!--<script src="/static/js/inicio.js"></script> -->
-    <script src="/static/js/OpcionesAnimales.js"></script>
-  </body>
+</body>
 </html>

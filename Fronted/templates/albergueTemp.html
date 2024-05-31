@@ -1,131 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menú de Inicio</title>
-    <link rel="stylesheet" href="../static/css/inicio.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="/static/css/modal.css" />
-    <script src="/static/lib/sweetalert2.min.js"></script>
-    <script src="/static/lib/jQuery3.js"></script>
-  </head>
-  <body>
-    <header class="header">
-      <nav class="social-menu">{{menu.menuitems | safe}}</nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albergue Temporal</title>
+    <link rel="stylesheet" href="/static/css/albergue.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Albergues Temporales <i class="fas fa-home"></i></h1>
     </header>
-
-    <!-- casa docececece-->
-
-    <div class="publicaciones-container">
-      <div class="bar" id="bar"><i class="bx bx-menu"></i></div>
-      <div class="menu" id="menu">
-        <div class="usuarioB">
-          <div class="imageU">
-            <img
-              id="imgUsu"
-              src="/static/imagenesServer/{{menu.imagenUser}}"
-              alt=""
-            />
-          </div>
-          <div class="user-info">
-            <h3>Bienvenido(a)</h3>
-            <p><i class="fas fa-user-circle"></i> {{menu.correo}}</p>
-          </div>
+    <div class="container">
+        <div class="contenido">
+            <h2>Importancia de los Albergues Temporales</h2>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Proporcionar Refugio: Ofrecen un entorno seguro y cómodo para los animales mientras esperan ser adoptados.</li>
+                <li><i class="fas fa-check-circle"></i> Mejorar la Salud: Permiten que los animales reciban atención médica, alimentación adecuada y cuidados.</li>
+                <li><i class="fas fa-check-circle"></i> Facilitar la Adopción: Ayudan a socializar a los animales, haciendo que sean más adoptables.</li>
+                <li><i class="fas fa-check-circle"></i> Reducción del Estrés: Un hogar temporal reduce el estrés de los animales en comparación con la vida en la calle o en refugios abarrotados.</li>
+            </ul>
         </div>
-        <a href="#"><i class="fas fa-paw"></i> Adopción de Mascotas</a>
-        <a href="#"><i class="fas fa-user-md"></i> Atención Veterinaria</a>
-        <a href="#"><i class="fas fa-hotel"></i> Albergue Temporal</a>
-        <a href="#"
-          ><i class="fas fa-book-reader"></i> Educación y Concientización</a
-        >
-        <a href="#"><i class="fas fa-tasks"></i> Programas de Esterilización</a>
-        <a href="#"
-          ><i class="fas fa-exclamation-triangle"></i> Denuncias de Maltrato</a
-        >
-        <a href="#"><i class="fas fa-hand-holding-usd"></i> Donaciones</a>
-        <a href="#"><i class="fas fa-address-book"></i> Contacto</a>
-        <div class="imagem">
-          <img src="/static/imagenes/home.png" alt="" />
+        
+        <div class="contenido">
+            <h2>Servicios Ofrecidos por los Albergues Temporales</h2>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Proporcionan un espacio seguro y confortable.</li>
+                <li><i class="fas fa-check-circle"></i> Ambiente libre de amenazas y condiciones climáticas adversas.</li>
+                <li><i class="fas fa-check-circle"></i> Acceso a cuidados veterinarios básicos y especializados.</li>
+                <li><i class="fas fa-check-circle"></i> Suministro de comida nutritiva y agua fresca.</li>
+                <li><i class="fas fa-check-circle"></i> Atención personalizada y cuidados diarios.</li>
+            </ul>
         </div>
-      </div>
-    </div>
-
-    <!-- CONTENEDOR 2 -->
-
-    <div class="container2">
-      <div class="tituloHome">
-        <h1>
-          PetProtege <i class="fas fa-dog"></i
-          ><i class="fas fa-exclamation-triangle"></i>
-        </h1>
-        <div class="switch">
-          <input type="checkbox" id="switch-mode" hidden />
-          <label for="switch-mode" class="switch-mode"></label>
+        
+        <div class="contenido">
+            <h2>Requisitos</h2>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Capacidad para Alojar Animales: Espacio adecuado y seguro para mantener a los animales temporalmente.</li>
+                <li><i class="fas fa-check-circle"></i> Compromiso y Tiempo: Disponibilidad para dedicar tiempo y atención a los animales.</li>
+                <li><i class="fas fa-check-circle"></i> Conocimiento Básico de Cuidado Animal: Entender las necesidades básicas de los animales.</li>
+                <li><i class="fas fa-check-circle"></i> Aprobación de Evaluación: Superar una evaluación inicial realizada por nuestro equipo.</li>
+            </ul>
         </div>
-      </div>
-      <div id="PublicacionesP" class="Publicaciones">
-        <article class="forecast">
-            <h1>Albergues temporales</h1>
-            <center>
-                <article class="day-forecast">
-                    <h2></h2>
-                      <p>PetProtege es una plataforma web dedicada a la publicación de animales en situación de calle para fomentar su adopción. Sabemos que muchos animales necesitan un refugio temporal mientras esperan ser adoptados. Este documento proporciona una guía para buscar ayuda en albergues temporales, detallando el proceso y la información necesaria para solicitar asistencia.</p>
-                </article>
-                <article class="day-forecast">
-                     <h2>Importancia de los Albergues Temporales</h2>
-                     <p>1. Proporcionar Refugio: Ofrecen un entorno seguro y cómodo para los animales mientras esperan ser adoptados.</p>
-                     <p>2. Mejorar la Salud: Permiten que los animales reciban atención médica, alimentación adecuada y cuidados.</p>
-                     <p>3. Facilitar la Adopción: Ayudan a socializar a los animales, haciendo que sean más adoptables.</p>
-                     <p>4. Reducción del Estrés: Un hogar temporal reduce el estrés de los animales en comparación con la vida en la calle o en refugios abarrotados.</p>
-                </article>
-                <article class="day-forecast">
-                    <h2>Servicios Ofrecidos por los Albergues Temporales</h2> 
-                      <p>- Proporcionan un espacio seguro y confortable.</p>
-                      <p>- Ambiente libre de amenazas y condiciones climáticas adversas.</p>
-                      <p>- Acceso a cuidados veterinarios básicos y especializados.</p>
-                      <p>- Suministro de comida nutritiva y agua fresca.</p>    
-                      <p>- Atención personalizada y cuidados diarios.</p>             
-                </article>
-                <article class="day-forecast">
-                    <h2>Requisitos</h2>
-                        <p>- Capacidad para Alojar Animales: Espacio adecuado y seguro para mantener a los animales temporalmente.</p>
-                        <p>- Compromiso y Tiempo: Disponibilidad para dedicar tiempo y atención a los animales.</p>
-                        <p>- Conocimiento Básico de Cuidado Animal: Entender las necesidades básicas de los animales.</p>
-                        <p>- Aprobación de Evaluación: Superar una evaluación inicial realizada por nuestro equipo.</p>
-                        <p></p>
-                        <p></p>
-                </article>
-                <article class="day-forecast">
-                    <h2>PetProtege agradece tu disposición para ofrecer un hogar temporal a los animales en situación de calle. Tu ayuda es fundamental para brindarles una segunda oportunidad y mejorar sus posibilidades de ser adoptados.</h2>
-                </article> 
-            </center>
-        </article>
-      </div>
-      <!-- INICIO PUBLICACIONES -->
-
+        
+        <p>PetProtege agradece tu disposición para ofrecer un hogar temporal a los animales en situación de calle. Tu ayuda es fundamental para brindarles una segunda oportunidad y mejorar sus posibilidades de ser adoptados.</p>
     </div>
-
-    <div class="theme-toggle" id="theme-toggle">
-      <i class="fas fa-adjust"></i>
-    </div>
-
-    {%include 'miModal.html'%} {%include 'miModalOpciones.html'%}
-
-    <!--<script src="/static/js/inicio.js"></script> -->
-    <script src="/static/js/OpcionesAnimales.js"></script>
-  </body>
+</body>
 </html>

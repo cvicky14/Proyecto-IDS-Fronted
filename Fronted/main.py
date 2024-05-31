@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, session, url_for, jsonify
+from flask import Flask, render_template, redirect, request, session, url_for
 import requests
 import json
 from datetime import datetime
@@ -329,6 +329,37 @@ def actualizar_publicacion():
         response = {"estado": 0, "mensaje": "Porfavor verificar los datos"}
         return json.dumps(response)
 
+@app.route('/Adopcion')
+def page1():
+    return render_template('reglamentoAdopcion.html')
+
+@app.route('/Atencion')
+def page2():
+    return render_template('atencionvet.html')
+
+@app.route('/Albergue')
+def page3():
+    return render_template('albergueTemp.html')
+
+@app.route('/Educacion')
+def page4():
+    return render_template('educacion.html')
+
+@app.route('/Programas')
+def page5():
+    return render_template('programasCastracion.html')
+
+@app.route('/Denuncias')
+def page6():
+    return render_template('denuncias.html')
+
+@app.route('/Donaciones')
+def page7():
+    return render_template('donaciones.html')
+
+@app.route('/Contacto')
+def page8():
+    return render_template('contacto.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

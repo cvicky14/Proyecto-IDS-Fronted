@@ -1,128 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menú de Inicio</title>
-    <link rel="stylesheet" href="../static/css/inicio.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="/static/css/modal.css" />
-    <script src="/static/lib/sweetalert2.min.js"></script>
-    <script src="/static/lib/jQuery3.js"></script>
-  </head>
-  <body>
-    <header class="header">
-      <nav class="social-menu">{{menu.menuitems | safe}}</nav>
-    </header>
-
-    <!-- casa docececece-->
-
-    <div class="publicaciones-container">
-      <div class="bar" id="bar"><i class="bx bx-menu"></i></div>
-      <div class="menu" id="menu">
-        <div class="usuarioB">
-          <div class="imageU">
-            <img
-              id="imgUsu"
-              src="/static/imagenesServer/{{menu.imagenUser}}"
-              alt=""
-            />
-          </div>
-          <div class="user-info">
-            <h3>Bienvenido(a)</h3>
-            <p><i class="fas fa-user-circle"></i> {{menu.correo}}</p>
-          </div>
-        </div>
-        <a href="#"><i class="fas fa-paw"></i> Adopción de Mascotas</a>
-        <a href="#"><i class="fas fa-user-md"></i> Atención Veterinaria</a>
-        <a href="#"><i class="fas fa-hotel"></i> Albergue Temporal</a>
-        <a href="#"
-          ><i class="fas fa-book-reader"></i> Educación y Concientización</a
-        >
-        <a href="#"><i class="fas fa-tasks"></i> Programas de Esterilización</a>
-        <a href="#"
-          ><i class="fas fa-exclamation-triangle"></i> Denuncias de Maltrato</a
-        >
-        <a href="#"><i class="fas fa-hand-holding-usd"></i> Donaciones</a>
-        <a href="#"><i class="fas fa-address-book"></i> Contacto</a>
-        <div class="imagem">
-          <img src="/static/imagenes/home.png" alt="" />
-        </div>
-      </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reglamento de Adopcion</title>
+    <link rel="stylesheet" href="/static/css/ReglamentoA.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Reglamento de Adopción <i class="fas fa-exclamation-triangle"></i></h1>
+        </header>
     </div>
-
-    <!-- CONTENEDOR 2 -->
-
-    <div class="container2">
-      <div class="tituloHome">
-        <h1>
-          PetProtege <i class="fas fa-dog"></i
-          ><i class="fas fa-exclamation-triangle"></i>
-        </h1>
-        <div class="switch">
-          <input type="checkbox" id="switch-mode" hidden />
-          <label for="switch-mode" class="switch-mode"></label>
-        </div>
-      </div>
-      <div id="PublicacionesP" class="Publicaciones">
-        <article class="forecast">
-            <h1>Reglamento para la adopción de mascotas</h1>
-            <center>
-                <article class="day-forecast">
-                    <h2>Requisitos para adoptar</h2>
-                      <p>- Los adoptantes deben ser mayores de 21 años.</p>
-                      <p>- Presentar una identificación oficial válida.</p>
-                      <p>- Proporcionar comprobante de domicilio reciente.</p>
-                      <p>- Los adoptantes deben pasar una entrevista con un representante de la organización.</p>
-                      <p>- Se realizará una visita domiciliaria para asegurar que el entorno es adecuado para la mascota.</p>
-                </article>
-                <article class="day-forecast">
-                     <h2>Proceso de Adopción</h2>
-                     <p>- Completar el formulario de solicitud de adopción en línea.</p>
-                     <p>- Proporcionar referencias personales y veterinarias (si ya tienen otras mascotas).</p>
-                     <p>- La solicitud será evaluada por el equipo de la organización, que verificará la información proporcionada y realizará entrevistas adicionales si es necesario.</p>
-                     <p>- Algunas adopciones pueden incluir un periodo de prueba de dos semanas para asegurar que la mascota se adapte bien a su nuevo hogar.</p>
-                </article>
-                <article class="day-forecast">
-                    <h2>Compromisos del Adoptante</h2> 
-                      <p>- Proveer alimentos de calidad, agua fresca, refugio, y atención médica regular.</p>
-                      <p>- Proporcionar ejercicio, entrenamiento y socialización adecuados.</p>
-                      <p>- Asegurarse de que la mascota sea esterilizada o castrada, si no lo está ya.</p>
-                      <p>- No vender, regalar, o transferir la mascota a terceros sin el consentimiento previo de la organización.</p>
-                      <p>- Si por alguna razón no pueden seguir cuidando de la mascota, deben devolverla a la organización en lugar de buscar un nuevo hogar por cuenta propia.</p>
-                      <p>-</p>
-                      <p>-</p>
-                </article>
-                <article class="day-forecast">
-                    <h2>Este reglamento establece un marco claro y detallado para el proceso de adopción, asegurando que las mascotas sean adoptadas por hogares responsables y preparados para cuidarlas adecuadamente. Además, protege los intereses de las mascotas y de la organización de adopción, promoviendo adopciones exitosas y sostenibles.</h2>
-                </article> 
-            </center>
-        </article>
-      </div>
-      <!-- INICIO PUBLICACIONES -->
-
+    <div class="reglamentoTexto">
+        <section id="reglamento">
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Ser mayor de 18 años.</li>
+                <li><i class="fas fa-check-circle"></i> Presentar identificación oficial vigente.</li>
+                <li><i class="fas fa-check-circle"></i> Comprobar domicilio fijo.</li>
+                <li><i class="fas fa-check-circle"></i> Firmar el contrato de adopción.</li>
+                <li><i class="fas fa-check-circle"></i> Aceptar las visitas de seguimiento.</li>
+            </ul>
+            <h3>Proceso de Adopción</h3>
+            <ol>
+                <li><i class="fas fa-check-circle"></i> Selecciona al animal que te interesa.</li>
+                <li><i class="fas fa-check-circle"></i> Completa el formulario de solicitud de adopción.</li>
+                <li><i class="fas fa-check-circle"></i> Recibirás una llamada o correo electrónico para agendar una entrevista y conocer al animal.</li>
+                <li><i class="fas fa-check-circle"></i> Si la entrevista es exitosa, se llevará a cabo una visita domiciliaria.</li>
+                <li><i class="fas fa-check-circle"></i> Una vez aprobada la adopción, se firma el contrato correspondiente y se realiza el pago de la cuota de adopción (si aplica).</li>
+            </ol>
+            <h3>Compromisos</h3>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Proporcionar un hogar seguro y amoroso.</li>
+                <li><i class="fas fa-check-circle"></i> Comprometerse a no abandonar al animal.</li>
+                <li><i class="fas fa-check-circle"></i> Proveer atención veterinaria necesaria.</li>
+                <li><i class="fas fa-check-circle"></i> Informar de cualquier cambio significativo en la situación del adoptante.</li>
+            </ul>
+        </section>
     </div>
-
-    <div class="theme-toggle" id="theme-toggle">
-      <i class="fas fa-adjust"></i>
-    </div>
-
-    {%include 'miModal.html'%} {%include 'miModalOpciones.html'%}
-
-    <!--<script src="/static/js/inicio.js"></script> -->
-    <script src="/static/js/OpcionesAnimales.js"></script>
-  </body>
+</body>
 </html>

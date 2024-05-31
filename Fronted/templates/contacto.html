@@ -1,107 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menú de Inicio</title>
-    <link rel="stylesheet" href="../static/css/inicio.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="/static/css/modal.css" />
-    <script src="/static/lib/sweetalert2.min.js"></script>
-    <script src="/static/lib/jQuery3.js"></script>
-  </head>
-  <body>
-    <header class="header">
-      <nav class="social-menu">{{menu.menuitems | safe}}</nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - PetProtege</title>
+    <link rel="stylesheet" href="/static/css/contacto.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-address-card"></i>Contactos</h1>
     </header>
-
-    <!-- casa docececece-->
-
-    <div class="publicaciones-container">
-      <div class="bar" id="bar"><i class="bx bx-menu"></i></div>
-      <div class="menu" id="menu">
-        <div class="usuarioB">
-          <div class="imageU">
-            <img
-              id="imgUsu"
-              src="/static/imagenesServer/{{menu.imagenUser}}"
-              alt=""
-            />
-          </div>
-          <div class="user-info">
-            <h3>Bienvenido(a)</h3>
-            <p><i class="fas fa-user-circle"></i> {{menu.correo}}</p>
-          </div>
+    <div class="container">
+        <div class="contact-info">
+            <div class="contact-info-item">
+                <h2>Pet Protege</h2>
+                <p><i class="fas fa-map-marker-alt"></i> 3ra Calle Oriente, Antigua Guatemala, Sacatepéquez, Guatemala</p>
+                <p><i class="fas fa-phone"></i> +502 1234-5678</p>
+                <p><i class="fas fa-envelope"></i> info@petprotege.com</p>
+            </div>
+            <div class="contact-info-item">
+                <h2>Adopta Animal GT</h2>
+                <p><i class="fas fa-map-marker-alt"></i> 5ta Avenida Norte #25, Antigua Guatemala, Sacatepéquez, Guatemala</p>
+                <p><i class="fas fa-phone"></i> +502 9876-5432</p>
+                <p><i class="fas fa-envelope"></i> contacto@rescateguatemala.org</p>
+            </div>
+            <div class="contact-info-item">
+                <h2>Huellas al Rescate</h2>
+                <p><i class="fas fa-map-marker-alt"></i> 1ra Calle Poniente, Antigua Guatemala, Sacatepéquez, Guatemala</p>
+                <p><i class="fas fa-phone"></i> +502 5678-9012</p>
+                <p><i class="fas fa-envelope"></i> info@adoptanimalgt.org</p>
+            </div>
+            <div class="contact-info-item">
+                <h2>Patitas Empolvadas</h2>
+                <p><i class="fas fa-map-marker-alt"></i> 2da Avenida Sur #10, Antigua Guatemala, Sacatepéquez, Guatemala</p>
+                <p><i class="fas fa-phone"></i>+502 3456-7890</p>
+                <p><i class="fas fa-envelope"></i>contacto@patitasempolvadas.org</p>
+            </div>
         </div>
-        <a href="#"><i class="fas fa-paw"></i> Adopción de Mascotas</a>
-        <a href="#"><i class="fas fa-user-md"></i> Atención Veterinaria</a>
-        <a href="#"><i class="fas fa-hotel"></i> Albergue Temporal</a>
-        <a href="#"
-          ><i class="fas fa-book-reader"></i> Educación y Concientización</a
-        >
-        <a href="#"><i class="fas fa-tasks"></i> Programas de Esterilización</a>
-        <a href="#"
-          ><i class="fas fa-exclamation-triangle"></i> Denuncias de Maltrato</a
-        >
-        <a href="#"><i class="fas fa-hand-holding-usd"></i> Donaciones</a>
-        <a href="#"><i class="fas fa-address-book"></i> Contacto</a>
-        <div class="imagem">
-          <img src="/static/imagenes/home.png" alt="" />
-        </div>
-      </div>
     </div>
-
-    <!-- CONTENEDOR 2 -->
-
-    <div class="container2">
-      <div class="tituloHome">
-        <h1>
-          PetProtege <i class="fas fa-dog"></i
-          ><i class="fas fa-exclamation-triangle"></i>
-        </h1>
-        <div class="switch">
-          <input type="checkbox" id="switch-mode" hidden />
-          <label for="switch-mode" class="switch-mode"></label>
-        </div>
-      </div>
-      <div id="PublicacionesP" class="Publicaciones">
-        <article class="forecast">
-            <h1></h1>
-            <center>
-                <article class="day-forecast">
-                    <h2>¡CONTACTANOS!</h2>
-                      <p>PetProtegeGT@gmail.com</p>
-                      <p>87946612</p>
-                      <p></p>
-                      <p>nos encontramos ubicados en 5ta avenida sur casa no. 85 Antigua Guatemala.</p>
-                </article> 
-            </center>
-        </article>
-      </div>
-      <!-- INICIO PUBLICACIONES -->
-
-    </div>
-
-    <div class="theme-toggle" id="theme-toggle">
-      <i class="fas fa-adjust"></i>
-    </div>
-
-    {%include 'miModal.html'%} {%include 'miModalOpciones.html'%}
-
-    <!--<script src="/static/js/inicio.js"></script> -->
-    <script src="/static/js/OpcionesAnimales.js"></script>
-  </body>
+</body>
 </html>
