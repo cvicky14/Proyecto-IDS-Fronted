@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menú de Inicio</title>
+    <link rel="stylesheet" href="../static/css/inicio.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/static/css/modal.css" />
+    <script src="/static/lib/sweetalert2.min.js"></script>
+    <script src="/static/lib/jQuery3.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="social-menu">{{menu.menuitems | safe}}</nav>
+    </header>
+
+    <!-- casa docececece-->
+
+    <div class="publicaciones-container">
+      <div class="bar" id="bar"><i class="bx bx-menu"></i></div>
+      <div class="menu" id="menu">
+        <div class="usuarioB">
+          <div class="imageU">
+            <img
+              id="imgUsu"
+              src="/static/imagenesServer/{{menu.imagenUser}}"
+              alt=""
+            />
+          </div>
+          <div class="user-info">
+            <h3>Bienvenido(a)</h3>
+            <p><i class="fas fa-user-circle"></i> {{menu.correo}}</p>
+          </div>
+        </div>
+        <a href="#"><i class="fas fa-paw"></i> Adopción de Mascotas</a>
+        <a href="#"><i class="fas fa-user-md"></i> Atención Veterinaria</a>
+        <a href="#"><i class="fas fa-hotel"></i> Albergue Temporal</a>
+        <a href="#"
+          ><i class="fas fa-book-reader"></i> Educación y Concientización</a
+        >
+        <a href="#"><i class="fas fa-tasks"></i> Programas de Esterilización</a>
+        <a href="#"
+          ><i class="fas fa-exclamation-triangle"></i> Denuncias de Maltrato</a
+        >
+        <a href="#"><i class="fas fa-hand-holding-usd"></i> Donaciones</a>
+        <a href="#"><i class="fas fa-address-book"></i> Contacto</a>
+        <div class="imagem">
+          <img src="/static/imagenes/home.png" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENEDOR 2 -->
+
+    <div class="container2">
+      <div class="tituloHome">
+        <h1>
+          PetProtege <i class="fas fa-dog"></i
+          ><i class="fas fa-exclamation-triangle"></i>
+        </h1>
+        <div class="switch">
+          <input type="checkbox" id="switch-mode" hidden />
+          <label for="switch-mode" class="switch-mode"></label>
+        </div>
+      </div>
+      <div id="PublicacionesP" class="Publicaciones">
+        <article class="forecast">
+            <h1>Programa de castración para mascotas</h1>
+            <center>
+                <article class="day-forecast">
+                    <h2></h2>
+                      <p>PetProtege se dedica al bienestar animal, y uno de nuestros principales objetivos es promover la salud y el control de la población de mascotas mediante programas de castración accesibles y de alta calidad. Este documento proporciona una descripción detallada de nuestros servicios de castración para mascotas, así como la información necesaria para que los dueños de mascotas puedan beneficiarse de ellos.</p>
+                </article>
+                <article class="day-forecast">
+                     <h2>Beneficios de la Castración</h2>
+                     <p>1. Control de la Población: Ayuda a reducir la cantidad de animales sin hogar.</p>
+                     <p>2. Salud Mejorada: Disminuye el riesgo de ciertos tipos de cáncer y otras enfermedades.</p>
+                     <p>3. Comportamiento: Reduce comportamientos indeseados como el marcaje y la agresividad.</p>
+                     <p>4. Vida Más Larga: Las mascotas castradas tienden a vivir más y tener una mejor calidad de vida.</p>
+                </article>
+                <article class="day-forecast">
+                    <h2>Procedimiento de Castración</h2> 
+                      <p>1. Castración Canina y Felina: Realizada por veterinarios calificados.</p>
+                      <p>2. Anestesia Segura: Uso de anestesia adecuada y monitoreo constante durante la operación.</p>
+                      <p>3. Equipos Modernos: Utilización de tecnología avanzada para asegurar la precisión y seguridad del procedimiento.</p>                   
+                </article>
+                <article class="day-forecast">
+                    <h2>Cuidados Post-Operativos</h2>
+                        <p>1. Instrucciones de Cuidado: Guía completa para los dueños sobre el cuidado post-operatorio.</p>
+                        <p>2. Seguimiento: Revisiones post-operatorias para asegurar una recuperación adecuada.</p>
+                        <p>3. Línea de Emergencia: Disponibilidad de un número de contacto en caso de emergencias post-operatorias.</p>
+                    <h2>Requisitos</h2>
+                        <p>1. Edad Mínima: Mascotas deben tener al menos 8 semanas de edad.</p>
+                        <p>2. Estado de Salud: Mascotas deben estar en buena salud general. Se realizará una evaluación previa.</p>
+                        <p>3. Vacunaciones: Deben tener las vacunas básicas al día.</p>
+                </article> 
+            </center>
+        </article>
+      </div>
+      <!-- INICIO PUBLICACIONES -->
+
+    </div>
+
+    <div class="theme-toggle" id="theme-toggle">
+      <i class="fas fa-adjust"></i>
+    </div>
+
+    {%include 'miModal.html'%} {%include 'miModalOpciones.html'%}
+
+    <!--<script src="/static/js/inicio.js"></script> -->
+    <script src="/static/js/OpcionesAnimales.js"></script>
+  </body>
+</html>

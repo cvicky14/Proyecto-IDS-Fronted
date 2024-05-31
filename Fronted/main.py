@@ -49,6 +49,24 @@ def donaciones():
 
     return render_template("donaciones.html", menu=doce)
 
+@app.route("/programasCastracion")
+def programasCastracion():
+    doce = session.get("programasCastracion")
+
+    return render_template("programasCastracion.html", menu=doce)
+
+@app.route("/denuncias")
+def denuncias():
+    doce = session.get("denuncias")
+
+    return render_template("denuncias.html", menu=doce)
+
+@app.route("/albergueTemp")
+def albergueTemp():
+    doce = session.get("albergueTemp")
+
+    return render_template("albergueTemp.html", menu=doce)
+
 @app.route("/contacto")
 def contacto():
     doce = session.get("contacto")
